@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字面量和变量</title>
+    <script>
+        /*
+            字面量 = 常量
+                - 字面量其实就是一个值，它所代表的含义就是它的字面意思
+                - 比如： 1 2 3 4 100 “hello”
+                - 在 JS 中所有的字面量都可以直接使用
+                - 但是直接使用字面量并不方便
+        */
+        console.log(true)  ; // 所有字面量都可以直接使用
+        console.log(80)  ; // 所有字面量都可以直接使用
+        console.log("hello") ; // 字符串
+       // console.log(a)就不能使用，因为a是一个变量，变量使用前需要先声明
+
+       /*
+            变量
+                - 变量可以用“存储”字面量
+                - 并且变量中存储的字面量可以随便修改
+                - 通过变量可以对字面量进行描述，并且变量比较方便修改
+       */
+        let x = 80 ;
+        console.log(x) ;
+
+        let age = 60;
+        console.log(age) ;
+
+        /*
+            多行注释：shift + alt + A
+            变量的使用
+                声明变量 -> let 变量名(新，推荐使用) / var 变量(旧) 有点缺陷，声明的变量没有块作用域
+                声明多个变量 -> let 变量1,变量2, ... ,变量n
+                变量赋值 -> 变量 = xx
+        */
+        let a ;
+        let b,c,d ;
+
+        a = 10 ;
+        b = 'hello' ;
+        c = true ;
+
+        console.log(a,b,c)
+
+        var e ;
+        e = 20 ; 
+        console.log(e) ;
+
+        let w = 10 , y = 20 , z = 30 ;
+        console.log(w,y,z) ;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

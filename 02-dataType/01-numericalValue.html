@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型_数值</title>
+    <script>
+        /* 
+            JS 中的数据类型由原始值和对象共同组成
+            数值、大整数、字符串、布尔值、空值、未定义、符号
+        */
+        /* 
+            数值（Number）
+                - 在 JS 中所有的整数和浮点数都是Number类型
+                - JS 中的数值并不是无限大的，当数值超过一定范围会显示近似值
+                - Infinity 是一个特殊的数值表示无穷
+                - 所以在 JS 中进行一些精度比较高的运算时要十分注意
+                - NaN (Not a Number):也是一个特殊的数值；表示非法的数值
+        */
+        let a = Infinity ;
+        let b = 1 - 'a' ;
+
+        console.log(a) ;
+        console.log(b) ;
+
+        /* 
+            大整数（BigInt）
+                - 大整数用来表示一些比较大的整数
+                - 大整数使用n结尾，它可以表示的数字范围是（不能超过内存大小的）无限大
+        */
+        x = 9999999999999999999999999999999999999999999999n
+        console.log(x) ;
+
+
+        /* 
+            其他进制的数字：
+                二进制 0b
+                八进制 0o
+                十六进制 0x
+        
+        */
+
+        y = 0b1010 ; // 输出的时候仍然是以十进制的形式展现
+        z = 0o10 ; 
+        i = 0xff ; 
+        console.log(y,z,i) ;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
