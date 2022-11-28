@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>类型转换-数值</title>
+    <script>
+      /* 
+        将其他的数据类型转换为数值
+          1. 使用Number()函数来讲其他类型转换为数值
+            转换的情况：
+              - 字符串：
+                -> 如果字符串时一个合法的数字，则会自动转换为对应的数字
+                -> 如果字符串不是合法数字，则转换为NaN
+                -> 如果字符串是空串或纯空格的字符串，则转换为 0
+              - 布尔值：
+                -> true 转换为 1 ，false 转换为 0
+              - Null 转换为0
+              - Undefined 转换为 NaN
+          专门用来将字符串转换为数值的两个方法  
+            parsenInt() -> 将一个字符串转换为一个整数
+              解析时会自左向右读取一个字符串，直到读取到字符串中所有的有效的整数
+            parseFloat() -> 将一个字符串转换为浮点数
+              解析时会自左向右读取一个字符串，直到读取到字符串中所有的有效的小数
+      */
+
+      let a = "123";
+      console.log(typeof a, a);
+      a = Number(a);
+      console.log(typeof a, a);
+
+      let b = "11n";
+      console.log(typeof b, b);
+      b = Number(b);
+      console.log(typeof b, b);
+
+      let c = "";
+      console.log(typeof c, c);
+      c = Number(c);
+      console.log(typeof c, c);
+
+      let d = true;
+      console.log(typeof d, d);
+      d = Number(d);
+      console.log(typeof d, d);
+
+      let e = "123.666px";
+      console.log(typeof e, e);
+      e = parseInt(e);
+      console.log(typeof e, e);
+
+      let f = "123.45aaa";
+      console.log(typeof f, f);
+      f = parseFloat(f);
+      console.log(typeof f, f);
+    </script>
+  </head>
+  <body></body>
+</html>

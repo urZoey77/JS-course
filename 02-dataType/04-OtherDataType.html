@@ -21,7 +21,19 @@
                 - undefined类型的值只有一个 就是undefined
                 - 使用typeof检查一个undefined类型的时，会返回“undefined”
             符号（symbol）
-   
+                - 用来创建一个唯一的标识
+                - 使用typeof检查符号时会返回“symbol”
+
+            JS 中 原始值一共有七种
+              1. Number
+              2. BigInt
+              3. String
+              4. Boolean
+              5. Null
+              6. Undefined
+              7. Symbol
+            七种原始值是构成各种数据的基石
+              原始值在 JS 中是不可变类型，一旦创建就不能修改
         */
 
       let bool = true; // 真
@@ -38,6 +50,10 @@
 
       let b = undefined;
       console.log(typeof b);
+
+      let c = Symbol(); // 调用Symbol()创建了一个符号
+      console.log(c);
+      console.log(typeof c);
     </script>
   </head>
 
