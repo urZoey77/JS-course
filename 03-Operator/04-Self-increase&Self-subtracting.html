@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自增和自减</title>
+    <script>
+      /*
+        ++ 自增运算符
+          - 使用后会使得原来的变量立刻增加 1
+          - 自增分为前自增（++a）和后自增（a++）
+          - 无论是 ++a 还是 a++ 都会使原变量立刻增加 1
+          - 不同的是 ++a 和 a++ 所返回的值不同
+            a++ 是自增前的值 旧值
+            ++a 是自增后的值 新值
+      */
+      let a, b, c, d, e, f, g, result1, result2, result3;
+      a = 10;
+      b = a++;
+      console.log("b(a++) =", b);
+      console.log("a =", a);
+
+      c = 10;
+      d = ++c;
+      console.log("d(++c) =", d);
+      console.log("c =", c);
+
+      e = 5;
+      result1 = e++; // 5
+      e = 5;
+      result2 = ++e; // 6
+      result3 = e; // 6
+      console.log("result1 =", result1);
+      console.log("result2 =", result2);
+      console.log("result3 =", result3);
+
+      f = 5;
+      //   5  +  7  + 7 = 19
+      g = f++ + ++f + f;
+      console.log("g =", g);
+
+      /*
+        -- 自减运算符
+          - 使用后会使得原来的变量立刻减少 1
+          - 自增分为前自减（--a）和后自减（a--）
+          - 无论是 --a 还是 a-- 都会使原变量立刻减少 1
+          - 不同的是 --a 和 a-- 所返回的值不同
+            a-- 是自减前的值 旧值
+            --a 是自减后的值 新值
+      */
+    </script>
+  </head>
+  <body></body>
+</html>

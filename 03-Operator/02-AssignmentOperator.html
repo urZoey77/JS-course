@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>赋值运算符</title>
+    <script>
+      /* 
+        赋值运算符用来将一个值赋值给一个变量
+          大部分的运算符都不会改变变量的值，赋值运算符除外
+          =
+            将符号右侧的值赋值给左侧的变量
+          ??=
+            空赋值
+            只有当变量的值为 null 或 undefined 时才会对变量进行赋值
+          +=
+            a += n 等价于 a = a + n
+          -=
+            a -= n 等价于 a = a - n
+          *=
+            a *= n 等价于 a = a * n
+          /=
+            a /= n 等价于 a = a / n
+          %=
+            a %= n 等价于 a = a % n
+          **=
+            a **= n 等价于 a = a ** n
+
+      */
+      let a = 10; // 将右边的值 赋值给 左边的变量
+      let b = a; // 将 a 的值赋值给变量 b
+      console.log("b =", b);
+      // 一个变量只有在 = 左边时才是变量，在 = 右边时它是值
+
+      let c, d, e, f, g, h, i, j;
+
+      // +=
+      c = 5;
+      c = c + 5;
+      c += 5; // 在 c 原来值的基础上增加 5 ,等价于 c = c + 5
+      console.log("c =", c);
+
+      // ??=
+      d = null;
+      d ??= 100;
+      console.log("d =", d);
+
+      e = 100;
+      console.log("e =", e);
+      e ??= 60;
+      console.log("e =", e);
+    </script>
+  </head>
+  <body></body>
+</html>

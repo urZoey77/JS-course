@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>算术运算符</title>
+    <script>
+      /*
+        运算符（操作符）
+          - 运算符可以用来对一个或多个操作数（值）进行运算
+          - 算术运算符：
+            + 加法运算符
+            - 减法运算符
+            * 乘法运算符
+            / 除法运算符
+            ** 幂运算 -> 求xx的y次幂 例如：10 ** 4 即求 10 的 4 次幂
+            %  模运算，两个数相除取余数
+          - 注意：
+            -> 算术运算时，除了字符串的加法，其他运算的操作数是非数值时，都会转换为数值然后再运算
+      */
+
+      let a = 1 + 1;
+      a = 10 - 5;
+      a = 2 * 4;
+      a = 10 / 3;
+      a = 10 / 0; // Infinity
+      console.log(a);
+
+      // 幂运算
+      let b = 10 ** 4;
+      console.log("b =", b);
+      let c = 9 ** 0.5; // 开方
+      console.log("c =", c);
+
+      // 模运算
+      let d = 10 % 3; // 10 / 3 余 1
+      console.log("d =", d);
+
+      /* 
+        JS 是一门弱类型语言，当进行运算时会通过自动的类型转换来完成运算
+      */
+      let e = 10 - "5";
+      f = 10 - true;
+      g = 9 + null;
+      h = 6 - undefined;
+      console.log("e =", e);
+      console.log("f =", f);
+      console.log("g =", g);
+      console.log("h =", h);
+
+      /* 
+        当任意一个值和字符串做加法运算时，它会先将其他值转换为字符串，然后再做拼串的操作
+        可以利用这一特点来完成类型转换
+          可以通过为任意类型 + 一个空串的形式来将其转换为字符串
+            其原理和String()函数相同，但使用起来更加简洁
+      */
+      let i = 100 + "2";
+      console.log("i =", i);
+    </script>
+  </head>
+  <body></body>
+</html>
