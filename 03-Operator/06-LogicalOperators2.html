@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逻辑运算符</title>
+    <script>
+      /* 
+      && 逻辑与
+        - 可以对两个值进行与运算
+        - 当 && 左右都为 true 时，否则返回 false
+        - 与运算是短路的与，如果第一个值为 false ，则不看第二个值
+        - 与运算是找 false ，如果找到 false 则直接返回，没有 false 才会返回 true
+        - 对于非布尔值进行与运算，它会转换为布尔值然后运算
+          但是最终会返回原值
+          - 如果第一个值为 false ，则直接返回第一个值
+          - 如果第一个值为 true ，则返回第二个值
+      */
+      
+      let result = true && true; // true
+      result = true && false; // false
+      result = false && true; // false
+      result = false && false; // falses
+      console.log(result);
+
+      //  true && alert(666); // 第一个值为 true , alert 会执行
+      false && alert(666); // 第一个值为 false , alert 不会执行
+
+      result = 1 && 2;// 返回值为 2 
+      result = 1 && 0;// 返回值为 0
+      result = 0 && NaN;// 返回值为 0
+      result = NaN && 0;// 返回值为 NaN
+      console.log(result); 
+
+      /* 
+       || 逻辑或
+         - 可以对两个值进行或运算
+         - 当 || 左右有 true 时返回 true ，否则返回 false
+         - 或运算也是短路的或，如果第一个值为 true ，则不看第二个值
+         - 或运算是找 true ，如果找到 true 则直接返回，没有 true 才会返回 false
+         - 对于非布尔值或运算，它会转换为布尔值然后运算
+          但是最终会返回原值
+          - 如果第一个值为 true ，则返回第一个值
+          - 如果第二个值为 false ，则返回第二个值
+       */
+
+      result = true || false; // true
+      result = false || true; // true
+      result = true || true; //true
+      result = false|| false; //false
+      console.log(result);
+
+      // false || alert(777); // 第一个值为 false ，alert 会执行
+      true || alert(777); // 第一个值为 true ， alert 不会执行
+
+      result = 1 || 2; // 1
+      result = "hello" || 6; //"hello"
+      result = NaN || 1;// 1 
+
+      console.log(result);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
