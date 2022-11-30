@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>关系运算符</title>
-  <script>
-    /* 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>关系运算符</title>
+    <script>
+      /* 
       关系运算符
         - 关系运算符用来检查两个值之间的关系是否成立
           成立返回 true ，不成立返回 false
@@ -26,26 +26,23 @@
         注意比较两个字符串格式的数值时一定要进行类型转换
     */
 
-    let result = 10 > 5; // true
-    result = 5 > 5; // false 
-    result = 5 >= 5; // true
+      let result = 10 > 5; // true
+      result = 5 > 5; // false
+      result = 5 >= 5; // true
 
-    result = 5 < '10'; // true
-    result = '1' > false; //true
-    result = 'abc' > 5; // false
-    result = 'a' > 'b'; // false
-    result = 'a' < 'b'; // true
-    console.log(result);
+      result = 5 < "10"; // true
+      result = "1" > false; //true
+      result = "abc" > 5; // false
+      result = "a" > "b"; // false
+      result = "a" < "b"; // true
+      console.log(result);
 
-    // 检查 num 是否在 5 和 10 之间
-    let num = 12
-    // result = 5 < num < 10; // 这里相当于 5 < num -> true ,true 跟 10 作比较 ，错误写法
-    result = num > 5 && num < 10; 
-    console.log(result);
-
-  </script>
-</head>
-<body>
-  
-</body>
+      // 检查 num 是否在 5 和 10 之间
+      let num = 12;
+      // result = 5 < num < 10; // 这里相当于 5 < num -> true ,true 跟 10 作比较 ，错误写法
+      result = num > 5 && num < 10;
+      console.log(result);
+    </script>
+  </head>
+  <body></body>
 </html>

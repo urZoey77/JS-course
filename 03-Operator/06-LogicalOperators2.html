@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>逻辑运算符</title>
     <script>
       /* 
@@ -17,7 +17,7 @@
           - 如果第一个值为 false ，则直接返回第一个值
           - 如果第一个值为 true ，则返回第二个值
       */
-      
+
       let result = true && true; // true
       result = true && false; // false
       result = false && true; // false
@@ -27,11 +27,11 @@
       //  true && alert(666); // 第一个值为 true , alert 会执行
       false && alert(666); // 第一个值为 false , alert 不会执行
 
-      result = 1 && 2;// 返回值为 2 
-      result = 1 && 0;// 返回值为 0
-      result = 0 && NaN;// 返回值为 0
-      result = NaN && 0;// 返回值为 NaN
-      console.log(result); 
+      result = 1 && 2; // 返回值为 2
+      result = 1 && 0; // 返回值为 0
+      result = 0 && NaN; // 返回值为 0
+      result = NaN && 0; // 返回值为 NaN
+      console.log(result);
 
       /* 
        || 逻辑或
@@ -48,7 +48,7 @@
       result = true || false; // true
       result = false || true; // true
       result = true || true; //true
-      result = false|| false; //false
+      result = false || false; //false
       console.log(result);
 
       // false || alert(777); // 第一个值为 false ，alert 会执行
@@ -56,12 +56,10 @@
 
       result = 1 || 2; // 1
       result = "hello" || 6; //"hello"
-      result = NaN || 1;// 1 
+      result = NaN || 1; // 1
 
       console.log(result);
     </script>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body></body>
 </html>
