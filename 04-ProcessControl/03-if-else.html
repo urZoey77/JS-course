@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if-else语句</title>
+    <script>
+      /*
+        if-else语句
+          - 语法：
+            if(条件表达式){
+              语句...
+            }else{
+              语句...
+            }
+          - 执行流程：
+            if-else执行时，先对条件表达式进行求值判断
+              如果结果为true，则执行if后的语句
+              如果结果为false，则执行else后的语句
+        if-else if-else 语句：
+          - 语法：
+            if(条件表达式){
+              语句...
+            } else if(条件表达式){
+              语句...
+            } else if(条件表达式){
+              语句...
+            } else {
+              语句...
+            }
+          - 执行流程
+            if-else if-else 语句，会自上而下依次对if后的条件表达式进行求值判断
+              如果条件表达式结果为 true ，则执行当前 if 后的语句，执行完毕语句结束
+              如果条件表达式结果为 false，则继续向下判断，直到找到 true 为止
+              如果所有的条件表达式都是 false ，则执行 else 后的语句
+            注意：
+              if-else if -else 语句中只会有一个代码块被执行
+                一旦有执行的代码块，下边的条件都不会再继续判断了
+                所以一定要注意，条件的编写顺序
+      */
+
+      let age = 80;
+
+      // if (age >= 60) {
+      //   alert("你已经退休了");
+      // } else {
+      //   alert("你还没有退休");
+      // }
+
+      if (age > 100) {
+        alert("长寿");
+      } else if (age > 70) {
+        alert("正常寿命");
+      } else if (age > 50) {
+        alert("要 +1s ");
+      } else if (age > 30) {
+        alert("命有点短");
+      } else {
+        alert("命短，心疼");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if练习2</title>
+    <script>
+      /*
+      练习 2
+        从键盘输入小明的期末成绩：
+          当成绩为 100 时，'奖励一台BMW'
+          当成绩为 [ 80 - 99 ]时，'奖励一台iPhone'
+          当成绩为 [ 60 - 79 ]时，'奖励一本参考书'
+          其他时，什么奖励也没有
+      */
+      /*
+        prompt() 函数可以用来获取用户输入的内容
+        它会将用户输入的内容以字符串的形式返回，可以通过变量来接收
+      */
+
+      /* 原解题思路：
+        疑惑点：有必要做isNaN的判断吗？反正只要不在 60-100的区间内的，都是没有奖励呀？
+        let score = +prompt("请输入小明的成绩：");
+        if (score == 100) {
+          alert("奖励一台BMW");
+        } else if (score >= 80 && score < 99) {
+          alert("奖励一台Iphone");
+        } else if (score >= 60 && score < 79) {
+          alert("奖励一本参考书");
+        } else {
+          alert("什么奖励也没有");
+        }
+      */
+
+      let score = +prompt("请输入小明的成绩：");
+      if (isNaN(score) || score < 0 || score > 100) {
+        alert("请输入合法成绩");
+      } else if (score === 100) {
+        alert("奖励一台BMW");
+      } else if (score >= 80 && score <= 99) {
+        alert("奖励一台Iphone");
+      } else if (score >= 60 && score <= 79) {
+        alert("奖励一本参考书");
+      } else {
+        alert("什么奖励也没有");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

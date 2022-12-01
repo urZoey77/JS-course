@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if练习1</title>
+    <script>
+      /*
+      练习 1
+        编写一个程序，获取一个用户输入的整数
+        然后通过程序显式这个数是奇数还是偶数
+      */
+      /*
+        prompt() 函数可以用来获取用户输入的内容
+        它会将用户输入的内容以字符串的形式返回，可以通过变量来接收
+      */
+      // let num = +prompt("请输入一个整数：");
+      let num = +prompt("请输入一个整数：");
+
+      // 验证用户的输入是否合法，只有是有效数字时才检查它是否是偶数
+
+      if (isNaN(num) || num % 1 !== 0) {
+        alert("请输入合法的数字");
+      } else if (num % 2 === 0) {
+        alert(`您输入的数${num}是偶数`);
+      } else {
+        alert(`您输入的数${num}是奇数`);
+      }
+
+      /* 
+        知识点：
+        prompt()
+        isNaN()
+      */
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if语句</title>
+    <script>
+      /* 
+      流程控制语句可以用来改变程序执行的顺序
+        1. 条件判断语句
+        2. 条件分支语句
+        3. 循环语句
+      
+        if 语句
+          - 语法：
+            if(条件表达式)
+              语句
+            - 执行流程
+              if 语句在执行会先对 if 后的条件表达式进行求值判断，
+                如果结果为 true ，则执行 if 后的语句
+                如果为 false 则不执行
+              if 语句只会控制紧随其后的那一行代码
+              如果希望可以控制多行代码，可以使用{}将语句括起来
+                最佳实践：即使 if 后已有一行代码，我们也应该编写代码块，这样结构会更加清晰
+              如果if后的添加表达式不是布尔值，会转换为布尔值然后再运算
+    */
+
+      if (false) {
+        alert("Haha");
+      }
+
+      let a = 10;
+      if (a > 10) {
+        console.log("a>10");
+        alert("666");
+      }
+
+      // if (100) {
+      //   alert("你猜我执行吗？");
+      // }
+
+      if (a === 10) {
+        alert("a=10");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
