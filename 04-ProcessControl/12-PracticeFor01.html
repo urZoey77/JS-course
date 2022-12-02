@@ -13,20 +13,18 @@
       */
       let num = 0,
         i = 0,
-        quantity = 0,
-        total = 0;
+        count = 0,
+        totalSum = 0;
       while (num <= 100) {
         i = num % 3;
-        if (i == 0) {
-          quantity++;
-          total = total + num;
-          num++;
-        } else {
-          num++;
+        if (i === 0) {
+          count++;
+          totalSum = totalSum + num;
         }
+        num++;
       }
-      console.log(quantity);
-      console.log(total);
+      console.log(count);
+      console.log(totalSum);
     </script>
   </head>
   <body></body>
