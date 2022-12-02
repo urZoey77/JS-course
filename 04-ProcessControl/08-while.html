@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>while</title>
+    <script>
+      /*
+      循环语句
+        - 通过循环语句可以使指定的代码反复执行
+        - JS 中一共有三种循环语句
+          while 语句
+          do-while 语句
+          for 语句
+        - while 语句
+          - 语法：
+            while(条件表达式){
+              语句...
+            }
+          - 执行流程
+            先对条件表达式进行求值判断
+            如果结果为 true ，则执行循环体，执行完毕继续判断
+            如果为 true ，则再次执行循环体，执行完毕继续判断，如此重复
+            直到条件表达式结果为 false 时，循环结束
+      */
+      /* 
+        通常编写一个循环，要有三个要件
+            1. 初始化表达式（用来初始化变量）
+            2. 条件表达式（设置循环运行的条件）
+            3. 更新表达式（修改初始化变量）
+      */
+
+      // 初始化表达式
+      let a = 0;
+      // 条件表达式
+      while (a < 5) {
+        console.log(a);
+        // 更新表达式
+        a++;
+      }
+
+      let i = 0;
+      while (1) {
+        console.log(i);
+        i++;
+        if (i === 5) {
+          break;
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

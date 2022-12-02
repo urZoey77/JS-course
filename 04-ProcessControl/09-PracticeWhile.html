@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>While练习</title>
+    <script>
+      /* 
+      练习：
+        假设银行存款的年利率为 5% ，问 1000 块存多少年可以变成 5000 块？
+      */
+      const expectedYear = 33;
+      let money = 1000,
+        year = 0;
+      while (money < 5000) {
+        money = money * 1.05;
+        year++;
+      }
+      if (expectedYear !== year) {
+        alert(`Expected ${expectedYear}, but got ${year}`);
+      } else {
+        console.log(year);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
