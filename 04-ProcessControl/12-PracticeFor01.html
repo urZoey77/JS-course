@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for练习1</title>
+    <script>
+      /*
+        练习 1 ： 求 100 以内 所有 3 的倍数的个数 和 总和）
+        思路 :
+          3 的倍数 num % 3 === 0
+      */
+      let num = 0,
+        i = 0,
+        quantity = 0,
+        total = 0;
+      while (num <= 100) {
+        i = num % 3;
+        if (i == 0) {
+          quantity++;
+          total = total + num;
+          num++;
+        } else {
+          num++;
+        }
+      }
+      console.log(quantity);
+      console.log(total);
+    </script>
+  </head>
+  <body></body>
+</html>
