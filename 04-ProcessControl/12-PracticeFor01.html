@@ -11,20 +11,42 @@
         思路 :
           3 的倍数 num % 3 === 0
       */
-      let num = 0,
-        i = 0,
-        count = 0,
-        totalSum = 0;
-      while (num <= 100) {
-        i = num % 3;
-        if (i === 0) {
+
+      // let num = 0,
+      //   i = 0,
+      //   count = 0,
+      //   totalSum = 0;
+      // while (num <= 100) {
+      //   i = num % 3;
+      //   if (i === 0) {
+      //     count++;
+      //     totalSum = totalSum + num;
+      //   }
+      //   num++;
+      // }
+      // console.log(count);
+      // console.log(totalSum);
+
+      let count = 0;
+      let totalSum = 0;
+      for (let num = 0; num <= 100; num++) {
+        if (num % 3 === 0) {
           count++;
-          totalSum = totalSum + num;
+          totalSum += num;
         }
-        num++;
       }
       console.log(count);
       console.log(totalSum);
+
+      // 更优思路：
+      // let count = 0;
+      // let totalSum = 0;
+      // for (let num = 3; num <= 100; num+=3){
+      //   count ++;
+      //   totalSum += num;
+      // }
+      // console.log(count);
+      // console.log(totalSum);
     </script>
   </head>
   <body></body>

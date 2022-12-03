@@ -5,7 +5,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>for练习2</title>
-    <script></script>
+    <script>
+      /*
+        练习 2 ：求 1000 以内的水仙花数
+          - 水仙花数
+            - 一个 n 位数 ( n >= 3 )，如果它各个位上数字的 n 次幂之和还等于这个数
+              那么这个数就是一个水仙花数
+      */
+      // let num = 100;
+      // let x, y, z, remaining;
+      // for (num = 100; num <= 1000; num++) {
+      //   x = parseInt(num / 100);
+      //   remaining = num % 100;
+      //   y = parseInt(remaining / 10);
+      //   z = remaining % 10;
+      //   if (x ** 3 + y ** 3 + z ** 3 === num) {
+      //     console.log(num);
+      //   }
+      // }
+
+      // let input = +prompt("Enter number");
+
+      // let N = 0; // num of digits
+      // let num = input;
+      // while (num > 0) {
+      //   N += 1;
+      //   num = Math.floor(num / 10);
+      // }
+      // console.log("位数", N);
+
+      // // 1234
+      // // 每次整除 10
+      // // 1234 / 10 = 123    // 1
+      // // 123 / 10 = 12      // 2
+      // // 12 / 10 = 1        // 3
+      // // 1 / 10 = 0         // 4
+
+      for (let input = 100; input <= 1000; input++) {
+        let N = 0;
+        while (Math.floor(input / 10 ** N) > 0) {
+          N += 1;
+        }
+
+        let num = input;
+        let sum = 0;
+        if (N >= 3) {
+          while (num > 0) {
+            sum += (num % 10) ** N;
+            num = Math.floor(num / 10);
+          }
+
+          if (sum === input) {
+            console.log("水仙花数", input);
+          }
+        }
+      }
+
+      // 其他思路
+      // for (let i = 100; i < 1000; i++) {
+      //   let strI = i + "";
+      //   if (strI[0] ** 3 + strI[1] ** 3 + strI[2] ** 3 === i) {
+      //     console.log(i);
+      //   }
+      // }
+    </script>
   </head>
   <body></body>
 </html>
