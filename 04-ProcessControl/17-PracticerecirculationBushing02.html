@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>循环嵌套练习2</title>
+    <script>
+      /*
+      练习：
+        编写代码，求100以内所有的质数
+      */
+      for (let num = 2; num < 100; num++) {
+        let isPrime = true;
+        for (let cur = 2; cur <= num - 1; cur++) {
+          if (num % cur === 0) {
+            isPrime = false;
+            break;
+          }
+        }
+        if (isPrime) {
+          document.write(num);
+          document.write("<br />");
+        }
+      }
+      // let input = +prompt("请输入一个大于 1 的整数：");
+      // if (isNaN(input) || input <= 1 || Math.trunc(input) - input !== 0) {
+      //   alert("请输入正确的整数");
+      // } else {
+      //   let isPrime = true;
+      //   for (let num = 2; num <= input - 1; num++) {
+      //     if (input % num === 0) {
+      //       alert(`${input}不是质数`);
+      //       isPrime = false;
+      //       break;
+      //     }
+      //   }
+      //   if (isPrime) {
+      //     alert(`${input}是质数`);
+      //   }
+    </script>
+  </head>
+  <body></body>
+</html>

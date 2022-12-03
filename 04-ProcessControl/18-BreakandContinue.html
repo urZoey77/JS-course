@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>break和continue</title>
+    <script>
+      /*
+       break
+         - break 用来终止 switch 和循环语句
+         - break 执行后，当前的switch 或循环会立即停止
+         - break 只在离它最近的循环当中生效
+       continue
+         -  continue 用来跳过当次循环
+      */
+      for (let i = 0; i < 5; i++) {
+        if (i === 3) {
+          break;
+        }
+        document.write(i);
+        document.write("<br>");
+      }
+      document.write("<hr>");
+
+      for (let j = 0; j < 5; j++) {
+        if (j === 3) {
+          continue;
+        }
+        document.write(j);
+        document.write("<br>");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>循环嵌套练习1</title>
+    <script>
+      /*
+        练习：在网页中打印 99乘法表
+          1x1=1
+          1x2=2 2x2=4
+          1x3=3 2x3=6 3x3=9
+          ...
+      */
+      for (let i = 1; i < 10; i++) {
+        for (let j = 1; j < i + 1; j++) {
+          let num = i * j;
+          let result = `${j} x ${i} = ${num} `;
+          document.write(result);
+        }
+        document.write("<br>");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
