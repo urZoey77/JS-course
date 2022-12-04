@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>改变量或改对象</title>
+    <script>
+      /*
+        修改对象
+          - 修改对象时，如果有其他变量指向该独享
+            则所有指向该对象的变量都会受到影响
+
+        修改变量
+          - 修改变量时，只会影响当前变量
+        在使用变量存储对象时，很容易因为改变变量指向的对象，提高代码的复杂度
+        所以通常情况下，声明存储对象的变量时会使用const
+        注意：
+          const 只是禁止变量被重新赋值，对对象的修改没有任何影响
+      */
+
+      let obj = {
+        name: "Peach",
+      };
+      let obj2 = obj;
+      console.log(`obj`, obj);
+      console.log(`obj2`, obj2);
+      obj2.name = "QIU"; // 修改对象，obj = obj2 ，所以同时发生了改变
+      console.log(`changeObj`, obj);
+      console.log(`changeObj2`, obj2);
+      obj2 = {}; // 修改变量
+      obj2.name = "Yee";
+      console.log(`changeObjAgain`, obj);
+      console.log(`changeObj2Again`, obj2);
+
+      console.log("------------------------");
+
+      const obj3 = {
+        name: "Peach",
+      };
+      const obj4 = obj;
+      console.log(`obj3`, obj3);
+      console.log(`obj4`, obj4);
+      obj4.name = "QIU";
+      console.log(`changeObj3`, obj3);
+      console.log(`changeObj4`, obj4);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -6,9 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>可变类型</title>
     <script>
-      /* 
-      可变类型
+      /*
+        原始值都属于不可变类型，一旦创建就无法修改
+          在内存中，不会创建重复的原始值
+
+        对象属于可变类型
+        对象创建完成后，可以任意的添加删除修改对象中的属性
+        注意：
+          当对两个对象进行相等或全等比较时，比较的是对象的内存地址
+          如果有两个变量同时指向一个对象
+            通过一个变量修改对象时，对另一个变量也会产生影响
       */
+      let obj = {
+        name: "Peach",
+        age: 18,
+      };
+
+      let obj2 = {};
+      let obj3 = {};
+      // console.log(obj2 === obj3); // false
+
+      let obj4 = obj;
+      obj4.name = "QIU"; // 当修改一个对象时，所有指向该对象的变量都会受到影响
+      console.log("obj", obj);
+      console.log("obj4", obj4);
+      console.log(obj === obj4);
     </script>
   </head>
   <body></body>
