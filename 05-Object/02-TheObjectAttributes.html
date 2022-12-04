@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象的属性</title>
+    <script>
+      /*
+        属性名
+          - 通常属性名就是一个字符串，所以属性名可以是任何值，没有什么特殊要求
+            - 但是如果属性名太特殊了，不能直接使用，需要使用[]来设置
+            - 强烈建议属性名也按照标识符的规范命名
+          - 也可以使用符号作为属性名
+            - 获取这种属性时，也必须使用symbol
+            - 使用symbol添加的属性，通常是那些不希望被外界访问的属性
+        属性值
+          - 对象的属性值可以是任意的数据类型，也可以是一个对象
+        使用 typeof 检查对象时，会返回一个 object
+      */
+      let obj = new Object();
+      obj.name = "Peach";
+      // let mySymbol = Symbol();
+      // obj[mySymbol] = "通过Symbol添加的属性";
+
+      // console.log(obj);
+      // console.log(obj[mySymbol]);
+      obj.age = 18;
+      obj["gender"] = "girl";
+
+      let str = "address";
+      obj[str] = "SZ"; // 等价于 obj["address"] = "花果山"
+      obj.str = "HAha"; // 使用.的形式添加属性时，不能使用变量
+
+      // console.log(obj);
+      // console.log(obj["gender"]);
+
+      let huLuWa = new Object();
+      huLuWa.grpa = new Object();
+      huLuWa.daWa = new Object();
+      huLuWa.grpa.name = "爷爷";
+      huLuWa.grpa.age = 80;
+      huLuWa.daWa.name = "大娃";
+      huLuWa.daWa.age = 10;
+
+      console.log(huLuWa);
+      console.log(typeof huLuWa);
+
+      /* 
+        in 运算符
+          - -用来检查对象中是否含有某个属性
+          - 语法 属性名 in obj、
+          - 如果有返回 true ，没有返回 false
+      */
+
+      console.log("name" in huLuWa);
+      console.log("name" in huLuWa.grpa);
+    </script>
+  </head>
+  <body></body>
+</html>

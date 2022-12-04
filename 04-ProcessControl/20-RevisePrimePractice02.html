@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改质数练习1</title>
+    <script>
+      /* 
+        优化前：
+          - 10000以内：185.761962890625 ms
+          - 100000以内：18166.444091796875 ms
+        第一次优化：
+          - 10000以内：24.103759765625 ms
+          - 100000以内：1697.201904296875 ms
+          - 1000000以内：136530.97827148438 ms
+        第二次优化：
+          - 10000以内：2.177001953125 ms
+          - 100000以内：15.158935546875 ms
+          - 1000000以内：329.973876953125 ms
+
+        问题：如何修改代码，提升其性能
+      */
+
+      // 开始一个计时器
+      console.time("质数练习");
+      for (let num = 2; num < 1000000; num++) {
+        let isPrime = true;
+        for (let cur = 2; cur <= num ** 0.5; cur++) {
+          if (num % cur === 0) {
+            isPrime = false;
+            //  进入判断说明 i 一定不是质数，后续检查没有执行的必要
+            break;
+          }
+        }
+        if (isPrime) {
+          // document.write(num, "<br>");
+        }
+      }
+
+      // 停止计时器
+      console.timeEnd("质数练习");
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象的字面量</title>
+    <script>
+      /*
+        对象字面量
+          - 可以直接使用 {} 来创建对象
+          - 使用 {} 所创建的对象，可以直接向对象中添加属性
+          - 语法
+            {
+              属性名 : 属性值,
+              [属性名] : 属性值,
+            }
+      */
+      let obj = Object();
+      let mySymbol = Symbol();
+      let obj2 = {
+        name: "Peach",
+        age: 18,
+        ["gender"]: "girl",
+        [mySymbol]: "SPecial",
+      };
+      // obj2.name = "Peach";
+      console.log(obj);
+      console.log(obj2);
+      console.log(typeof obj2);
+    </script>
+  </head>
+  <body></body>
+</html>
