@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用对象作为参数</title>
+    <script>
+      /* 
+    
+    */
+      function fn(a) {
+        console.log("a =", a);
+      }
+
+      // 对象可以作为参数传递
+      const obj = { name: "Peach" };
+
+      // 传递实参时，传递并不是变量本身，而是变量中存储的值
+      fn(obj);
+
+      // 函数每次调用，都会重新创建默认值
+      function fn2(b = { name: "QIU" }) {
+        console.log("b =", b);
+        b.name = "Yee";
+        console.log("b = ", b);
+      }
+      fn2();
+      fn2();
+    </script>
+  </head>
+  <body></body>
+</html>

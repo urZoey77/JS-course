@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>箭头函数的参数和参数默认值</title>
+    <script>
+      /*
+        箭头函数的参数
+      */
+      const fn = (a) => {
+        console.log(a);
+      };
+
+      fn(123);
+      // 当箭头函数中只有一个参数值，可以省略()
+      const fn2 = (a) => {
+        console.log(a);
+      };
+      fn2(456);
+
+      // 定义参数是，可以为参数指定默认值
+      // 默认值会在没有对应实参时生效
+      const fn3 = (a = 10, b = 20, c = 30) => {
+        console.log("a =", a);
+        console.log("b =", b);
+        console.log("c =", c);
+      };
+      fn3(1, 2);
+    </script>
+  </head>
+  <body></body>
+</html>

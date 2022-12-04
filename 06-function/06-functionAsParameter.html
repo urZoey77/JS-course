@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数作为参数</title>
+    <script>
+      function fn(a) {
+        // console.log("a =", a);
+        a();
+      }
+      // fn(123);
+      /* 
+        在 JS 中，函数也是一个对象（一等函数）
+          别的对象能做的事，函数也可以做
+
+      */
+      let obj = { name: "peach" };
+      function fn2() {
+        console.log("fn2");
+      }
+      // fn(fn2);
+
+      // fn(function () {
+      //   console.log("匿名函数");
+      // });
+
+      fn(() => console.log("箭头函数"));
+    </script>
+  </head>
+  <body></body>
+</html>

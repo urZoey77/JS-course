@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>参数简介</title>
+    <script>
+      /* 
+        形式参数
+          - 在定义函数时，可以在函数中指定数量不等的形式参数（形参）
+          - 在函数中定义形参，就相当于在函数内部声明了对应的变量但是没有赋值
+        
+        实际参数
+          - 在调用函数时，可以在函数()传递数量不等的实参
+          - 实参会赋值给其对应的实参
+          - 参数：
+            1. 如果实参和形参数量相同，则对应的实参赋值给对应的形参
+            2. 如果实参多余形参，则多余的实参不会使用
+            3. 如果形参多余实参，则多余的形参为undefined
+          
+        参数的类型
+          - 在 JS 中不会检查参数的类型，可以传递任何类型的值作为参数
+
+        1. 函数声明
+          function 函数名([参数]){
+            语句...
+          }
+        2. 函数表达式
+          const 变量 = function([参数]){
+            语句 ...
+          }
+        3. 箭头函数
+          ([参数]) => {
+            语句 ...
+          }
+      */
+      function fn(a, b) {
+        console.log("a =", a);
+        console.log("b =", b);
+      }
+      fn({ name: "peach" }, 7);
+
+      /*
+        定义一个可以求任意两个数和的函数
+      */
+      function sum(a, b) {
+        console.log(`${+a} + ${+b} =`, +a + +b);
+      }
+
+      sum({}, 6);
+    </script>
+  </head>
+  <body></body>
+</html>
