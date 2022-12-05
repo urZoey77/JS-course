@@ -5,6 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>箭头函数的返回值</title>
+    <script>
+      // const sum = (a, b) => {
+      //   return a + b;
+      // };
+
+      /* 
+        箭头函数的返回之后可以直接写在 => 后
+          如果直接在箭头后设置对象字面量为返回值时，对象字面量必须用()括起来
+      */
+
+      const sum = (a, b) => a + b;
+
+      const fn = () => ({ name: "Peach" });
+      // =>后除了跟返回值还可以跟代码块，此时会把对象当成代码块
+      let result = sum(123, 456);
+      console.log(result);
+
+      let resultFn = fn();
+      console.log(resultFn);
+    </script>
   </head>
   <body></body>
 </html>

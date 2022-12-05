@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作用域链</title>
+    <script>
+      /*
+        作用域链
+          - 当我们使用一个变量时，
+            JS 解释器会有现在当前作用域中寻找变量
+              如果中找到了则直接使用
+              如果没找到，则去上一层作用域中寻找，找到了则使用
+              如果没找到，则继续去上一层寻找，以此类推
+              如果一直到全局作用域都没找到，则报错 xxx is not defined
+      */
+
+      let a = 10;
+
+      {
+        let a = "第一代码块中的a";
+        {
+          let a = "第二代码块中的a";
+          console.log(a); // 谁近就访问谁
+        }
+      }
+
+      let b = 33;
+
+      function fn() {
+        let b = 44;
+
+        function f1() {
+          let b = 55;
+          console.log(b);
+        }
+
+        f1();
+      }
+      fn();
+    </script>
+  </head>
+  <body></body>
+</html>
