@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>提升</title>
+    <script>
+      /* 
+        变量的提升
+          - 使用 var 声明的变量,它会在所有代码执行前被声明
+          - 使用 let 声明的变量实际也会提升,但是赋值之前解释器禁止对该变量访问
+
+        函数的提升 - 只有 function()开头声明的才行
+          - 使用函数声明创建的函数，会在其他代码执行前被创建
+            所以我们可以在函数声明前调用函数
+            P.S 有用但是不多
+
+        为什么要有提升
+          
+      */
+
+      fn(); // 此时也能执行
+      function fn() {
+        alert("i'm fn");
+      }
+      // console.log(a);
+      //  a = 10; // window.a = 10;此时log(a) is not defined
+      var a = 10; // 此时 log(a) 为 undefined
+      // console.log(a);
+      // fn();
+    </script>
+  </head>
+  <body></body>
+</html>
