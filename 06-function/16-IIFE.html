@@ -16,35 +16,21 @@
         所以我们的代码要尽量编写到局部作用域
         如果使用let声明的变量，可以使用{}来创建块作用域
       */
-      // fn();
-      // console.log("123");
 
-      // {
-      //   let a = 20;
-      // }
-      // // console.log(a);
+      // 希望可以创建一个只执行一次的匿名函数
+      /* 
+        立即执行函数（IIFE）
+          立即执行函数是一个匿名的函数，并且它只会调用一次
+      */
+      (function () {
+        let a = 10;
+        console.log(111);
+      })();
 
-      // console.log(a);
-      // console.log(test);
-      // if (false) {
-      //   function test() {
-      //     console.log("test");
-      //   }
-      //   var a = 123;
-      // }
-
-      // test();
-      // console.log(fn);
-
-      {
-        let a = 1;
-        fn();
-        function fn() {
-          console.log("111");
-        }
-      }
-      // console.log(a);
-      // fn();
+      (function () {
+        let a = 20;
+        console.log(222);
+      })();
     </script>
   </head>
   <body></body>
