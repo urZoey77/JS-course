@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>构造函数</title>
+    <script>
+      /*
+      class Person {
+        name = "Peach";
+          // 当我们在类中直接指定实例属性的值时
+          // 意味着我们创建的所有对象的属性都是这个值
+
+        age = 18;
+        gender = "女";
+
+        sayHello() {
+          console.log(`hello,i'm ` + this.name);
+        }
+
+      const p1 = new Person();
+      console.log(p1);
+
+      const p2 = new Person();
+      p2.name = "QIU";
+      console.log(p2);
+
+      const p3 = new Person();
+      console.log(p3);
+      */
+
+      class Person {
+        // 在类中可以添加一个特殊的方法 constructor
+        // 该方法我们称为构造（构造函数）
+        // 构造函数会在我们调用类创建对象时执行
+        //  当我们使用 new 去通过类创建对象的时候，就相当于调用 constructor
+        name;
+        age;
+        gender;
+        constructor(name, age, gender) {
+          // 可以在构造函数中，为实例属性进行赋值
+          // 在构造函数中，this表示当前所创建的对象
+          // console.log("constructor is running");
+          // console.log(name, age, gender);
+          this.name = name;
+          this.age = age;
+          this.gender = gender;
+        }
+      }
+
+      const p1 = new Person("peach", 18, "女");
+      const p2 = new Person("QIU", 28, "女");
+      const p3 = new Person("Yee", 25, "女");
+
+      console.log(p1);
+      console.log(p2);
+      console.log(p3);
+    </script>
+  </head>
+  <body></body>
+</html>
