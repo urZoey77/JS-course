@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>类的简介</title>
+    <script>
+      /*
+        使用 object 创建对象的问题：
+          1. 无法区分出不同类型的对象
+          2. 不方便批量创建对象
+        在 JS 中可以通过类（class）来解决这个问题：
+          1. 类是对象模板，可以将对象中的属性和方法直接定义在类中
+             定义后，就可以直接通过类来创建对象
+          2. 通过同一个类创建的对象，我们称为同类型
+             可以使用 instanceof 来检查一个对象是否由某个类创建
+             如果某个对象是某个类所创建，则我们称该对象是这个类的实例
+
+        语法：
+          class 类型 {} // 类名要使用大驼峰命名法
+          const 类名 = class {}
+        通过类创建对象
+          new 类()
+      */
+      // Person 类专门用来创建人的对象
+      class Person {}
+
+      // Dog 类专门用来创建人的对象
+      class Dog {}
+
+      const p1 = new Person(); // 调用构造函数创建对象
+      const d1 = new Dog(); // d1 就是 Dog 类的实例
+      console.log(p1 instanceof Person);
+      console.log(d1 instanceof Person);
+      /* 
+        const five = {
+        // 添加属性
+        name: "Five Wang",
+        age: 48,
+        height: 165,
+        weight: 100,
+
+        //添加方法
+        sleep() {
+          console.log(this.name + " is sleeping");
+        },
+        eat() {
+          console.log(this.name + " is eating");
+        },
+      };
+
+      const yellow = {
+        name: "bigYellow",
+        age: 3,
+        sleep() {
+          console.log(this.name + " is sleeping");
+        },
+        eat() {
+          console.log(this.name + " is eating");
+        },
+      };
+
+      // console.log(five);
+      // console.log(yellow);
+      */
+    </script>
+  </head>
+  <body></body>
+</html>

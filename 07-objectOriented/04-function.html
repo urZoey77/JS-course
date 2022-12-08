@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>方法</title>
+    <script>
+      /* 
+        方法的添加方法有两种
+      */
+      class Person {
+        name = "Peach";
+        // sayHello = function () {
+        // console.log("hello");
+        // }; // 添加方法的一种方式
+        sayHello() {
+          console.log("Haha,this is " + this.name);
+        } //这个也是添加方法 --> 实例方法
+        // 实例方法中 this 就是当前实例
+
+        static test() {
+          console.log(`i'm ` + this.name + ` static function`);
+        }
+        // 静态方法（类方法），通过类来调用
+      }
+      const p1 = new Person();
+      // console.log(p1);
+
+      p1.sayHello();
+      Person.test();
+    </script>
+  </head>
+  <body></body>
+</html>
