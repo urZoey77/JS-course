@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>封装</title>
+    <script>
+      /*
+        面向对象的特点：
+          封装、继承和多态
+
+        1. 封装
+          - 对象就是一个用来存储不同属性的容器
+          - 对象不仅负责存储属性（装），还要负责数据的安全（封）
+          - 直接添加到对象中的属性，并不安全，因为它们可以被任意的修改
+          - 如何确保数据的安全
+              1. 私有化数据
+                - 将需要保护的数据设置为私有，只能在类内部使用
+              2. 提供setter和getter方法来开放对数据的操作
+                - 属性设置私有，通过 getter setter方法操作属性带来的好处
+                  1. 可以控制属性的读写权限
+                  2. 可以在方法中对属性的值进行验证
+          - 封装主要用来保证数据的安全
+          - 实现封装的方式：
+              1. 属性私有化 #
+              2. 通过getter 和 setter 方法来操作属性
+                get 属性名(){
+                  return this.#属性名
+                }
+
+                set 属性名(参数){
+                  this.#属性名 = 参数
+                }
+      */
+
+      class Person {
+        #address = "sz"; // 实例使用 #开头就变成了私有属性，私有属性只能在类内部访问
+        #name;
+        #age;
+        #gender;
+        constructor(name, age, gender) {
+          this.#name = name;
+          this.#age = age;
+          this.#gender = gender;
+        }
+        sayHello() {
+          console.log(this.#name, this.#address);
+        }
+        // getter方法，用来读取属性
+        get age() {
+          return this.#age;
+        }
+        //  setter方法，用来设置属性
+        set age(age) {
+          if (isNaN(age) || age <= 0) {
+            console.log(`${age} is NaN`);
+          } else {
+            this.#age = age;
+          }
+        }
+
+        get gender() {
+          return this.#gender;
+        }
+      }
+
+      const p1 = new Person("Peach", 18, "女");
+      // p1.age = -18;
+      p1.age = 18;
+      console.log(p1.age);
+    </script>
+  </head>
+  <body></body>
+</html>
