@@ -26,13 +26,32 @@
           console.log("动物在叫");
         }
       }
-      class Cat extends Animal {}
+      class Cat extends Animal {
+        // 在子类中，可以通过创建同名方法来重写父类的方法
+        sayHello() {
+          console.log("meow");
+        }
+        // 重写构造函数
+        constructor(name, age) {
+          // 重写构造函数时，构造函数的第一行代码必须为super()
+          super(name); // 调用父类的构造函数
 
-      class Dog extends Animal {}
+          this.age = age;
+        }
+      }
+
+      class Dog extends Animal {
+        // 调用一下父类的sayHello
+        sayHello() {
+          super.sayHello(); // 在方法中可以使用super来引用父类的方法
+          console.log("wang");
+        }
+      }
 
       const dog = new Dog("wangcai");
-      const cat = new Cat("Tom");
+      const cat = new Cat("Tom", 3);
 
+      cat.sayHello();
       dog.sayHello();
       console.log(dog);
       console.log(cat);

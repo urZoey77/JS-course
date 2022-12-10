@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象的结构</title>
+    <script>
+      /*
+        对象中存储属性的区域实际有两个：
+          1. 对象自身
+            - 直接通过对象所添加的属性，位于对象自身中
+            - 在类中通过 x = y 的形式添加的属性，位于对象自身中
+
+          2. 神秘的位置？
+      */
+      class Person {
+        name = "Peach";
+        age = 18;
+
+        constructor() {
+          // 在类中通过 x = y 的形式添加的属性
+          this.gender = "女";
+        }
+
+        sayHello() {
+          console.log(`hello,i'm`, this.name);
+        }
+      }
+
+      const p1 = new Person();
+      p1.address = "SZ"; // 直接通过对象所添加的属性，位于对象自身中
+      console.log(p1);
+      p1.sayHello();
+    </script>
+  </head>
+  <body></body>
+</html>
