@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改原型</title>
+    <script>
+      /*
+        大部分情况下，我们是不需要修改原型对象
+          注意：
+            千万不要通过类的实例去修改原型
+              1. 通过一个对象影响所有同类对象，是不合适的
+              2. 修改原型先得创建实例，麻烦
+              3. 危险
+        除了通过__proto__ 能访问对象的原型外
+          还可以通过类的 prototype 属性来访问实例的原型
+      */
+      class Person {
+        name = "Peach";
+        age = 18;
+
+        sayHello() {
+          console.log(`hello,i'm`, this.name);
+        }
+      }
+
+      class Dog {}
+
+      const p = new Person();
+      const p2 = new Person();
+
+      // 通过对象修改原型，向原型中添加方法，修改后所有同类实例都能访问该办法
+      // p.__proto__.run = () => {
+      //   console.log(this.name, `is running`);
+      // };
+
+      // p.__proto__ = new Dog(); // 直接为对象赋值了一个新的原型
+      // p.run();
+      // p2.run();
+
+      // console.log(Person.prototype === p.__proto__);
+      console.log(Person.prototype); // 访问Person实例的原型对象
+
+      Person.prototype.fly = () => {
+        console.log(`i'm flying`);
+      };
+
+      p.fly();
+      p2.fly();
+
+      console.log(p2);
+    </script>
+  </head>
+  <body></body>
+</html>

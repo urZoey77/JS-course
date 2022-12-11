@@ -4,7 +4,60 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>instance和hasOwn</title>
+    <script>
+      /* 
+        instanceof 用来检查一个对象是否是一个类的实例
+          - instanceof 检查的是对象的原型链上是否由该类实例
+            只要原型链上有该类实例，就会返回 true
+          -
+           dog -> Animal的实例 -> Object实例 -> Object原
+
+          - Object 是所有对象的原型
+            所以任何和对象和 Object 进行 instanceof 运算都会返回true
+      */
+
+      class Animal {}
+      class Dog extends Animal {}
+
+      const dog = new Dog();
+      // console.log(dog instanceof Dog);
+      // console.log(dog instanceof Animal);
+
+      const obj = new Object();
+      console.log(obj.__proto__);
+      console.log(Object.prototype);
+      console.log(obj.__proto__ === Object.prototype);
+
+      /*
+        - in
+          使用in运算符检查属性时，无论属性在对象自身还是在原型中，都会返回 true 
+        
+        - 对象.hasOwnProperty(属性名) [ 不推荐使用 ]
+          用来检查一个对象的自身是否含有某个属性
+        
+        - Object.hasOwn(对象,属性名)
+          用来检查一个对象的自身是否含有某个属性
+      */
+      class Person {
+        name = "Peach";
+        age = 18;
+
+        sayHello() {
+          console.log(`hello,i'm`, this.name);
+        }
+      }
+
+      const p = new Person();
+      console.log("name" in p);
+      console.log("sayHello" in p);
+      // 使用in运算符检查属性时，无论属性在对象自身还是在原型中，都会返回 true
+      console.log(p.hasOwnProperty("sayHello"));
+      console.log(p.hasOwnProperty("name"));
+
+      console.log(Object.hasOwn(p, "name"));
+      console.log(Object.hasOwn(p, "sayHello"));
+    </script>
   </head>
   <body></body>
 </html>
