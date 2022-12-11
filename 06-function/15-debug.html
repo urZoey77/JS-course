@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>debug</title>
+    <script>
+      var a = 5;
+      function todo() {
+        var a = 9;
+        return function () {
+          a = 7;
+        };
+      }
+      todo();
+      console.log(a);
+    </script>
+  </head>
+  <body></body>
+</html>
