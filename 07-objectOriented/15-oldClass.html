@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>旧类</title>
+    <script>
+      /* 
+        早期 JS 中，直接通过函数来定义类
+          - 一个函数如果直接通过调用 xxx() 那么这个函数就是一个普通函数
+          - 一个函数如果通过 new 调用 new xxx() 那么这个函数就是一个构造函数
+      */
+
+      function Person() {}
+
+      const p = new Person();
+
+      console.log(p);
+    </script>
+  </head>
+  <body></body>
+</html>
