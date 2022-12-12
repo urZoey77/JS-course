@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for-of语句</title>
+    <script>
+      /* 
+      for-of 语句可以用来遍历可迭代对象
+
+      语法：
+      for（变量 of 可迭代的对象）{
+        语句...
+      }
+
+      执行流程：
+        for-of的循环体会执行多次，数组中有几个元素就会执行几次
+          每次执行时都会将一个元素赋值给变量
+     */
+
+      const arr = ["Peach", "Qiu", "Yee", "kwan"];
+      for (let value of arr) {
+        console.log(value);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

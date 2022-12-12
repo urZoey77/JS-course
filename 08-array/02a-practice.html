@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>练习</title>
+    <script>
+      /*
+        定义一个 Person 类，类中有两个属性，name和age
+          然后创建几个Person对象，将其添加到一个数组在中
+        遍历数组，并打印未成年人的信息
+      */
+      class Person {
+        name;
+        age;
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+      }
+
+      const p1 = new Person("Peach", 20);
+      const p2 = new Person("Qiu", 14);
+      const p3 = new Person("Yee", 15);
+
+      const personArr = [p1, p2, p3];
+      console.log(personArr);
+
+      for (i = 0; i < personArr.length; i++) {
+        if (personArr[i].age <= 18) {
+          console.log(personArr[i]);
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

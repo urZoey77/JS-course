@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组遍历</title>
+    <script>
+      // 任何类型的值都可以称为数组中的元素
+      let arr = [1, "hello", true, null, { name: "peach" }, () => {}];
+      // 创建数组时，尽量要确保数组中存储的数据的类型是相同的
+      arr = ["Peach", "Qiu", "Yee", "kwan", "chau"];
+      // console.log(arr);
+
+      /* 
+        遍历数组
+          - 遍历数组简单理解，就是获取到数组中的每一个元素
+      */
+      for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
