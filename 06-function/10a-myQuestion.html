@@ -11,14 +11,14 @@
         document.write("proxyFn<br>");
       }
 
-      let scopeFn = function () {
+      var scopeFn = function () {
         function blockFn() {
           document.write("blockFn");
         }
         blockFn();
       };
       window.proxyFn();
-      scopeFn();
+      window.scopeFn();
     </script>
   </head>
   <body></body>

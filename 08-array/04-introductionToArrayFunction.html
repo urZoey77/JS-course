@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组的方法介绍</title>
+    <script>
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript
+      /* 
+        Array.isArray()
+         - 用来检查一个对象是否数组
+      */
+      console.log(Array.isArray({ name: "peach" }));
+      console.log(Array.isArray([1, 2, 3]));
+
+      /* 
+        at()
+          - 可以根据索引获取数组中的指定元素
+          - at 可以接收负索引作为参数
+      */
+      const arr = ["Peach", "Qiu", "Yee", "kwan"];
+      console.log(arr.at(0));
+      console.log(arr.at(-2)); // 可以从后往前取
+
+      /* 
+        concat()
+          - 用来连接两个或多个数组
+          - 非破坏性方法，不会影响原数组，而是返回一个新数组
+      */
+      const arr2 = ["momo", "Fiona"];
+      let res = arr.concat(arr2, ["Guan"]);
+      console.log(res);
+    </script>
+  </head>
+  <body></body>
+</html>
