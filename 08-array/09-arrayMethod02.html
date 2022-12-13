@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组的方法（破坏性）</title>
+    <script>
+      let arr = ["Peach", "Qiu", "Yee"];
+      /* 
+        push()
+          - 向数组的末尾添加一个或多个元素，并返回新的长度
+      */
+      arr.push("Fiona", "Guan");
+      console.log(arr);
+
+      /* 
+        pop()
+          - 删除并返回数组的最后一个元素
+      */
+      arr.pop();
+      console.log(arr);
+
+      /* 
+        unshift()
+          - 向数组的开头添加一个或多个元素，并返回新的长度
+      */
+      arr.unshift("Wang");
+      console.log(arr);
+
+      /* 
+        shift()
+          - 删除并返回数组的第一个元素
+      */
+      arr.shift();
+      console.log(arr);
+
+      /* 
+        splice()
+          -可以删除、添加、插入、替换数组中的元素
+            参数：
+              1. 删除的起始位置
+              2. 删除的数量
+            返回值：
+              - 返回被删除的元素
+      */
+      // arr =  ['Peach', 'Qiu', 'Yee', 'Fiona']
+      let res = arr.splice(1, 2, "wang"); //从索引为1的元素开始删除 2 个元素
+      console.log(arr);
+      console.log(res);
+    </script>
+  </head>
+  <body></body>
+</html>
