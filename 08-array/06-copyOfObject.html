@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象的复制</title>
+    <script>
+      const arr = ["Peach", "Qiu", "Yee"];
+      const arr2 = arr;
+
+      // 如何去复制一个对象，复制必须要产生新对象
+      // 当调用slice时，会产生一个新的数组对象，从而完成对数组的复制
+
+      const arr3 = arr.slice();
+      console.log(arr);
+      console.log(arr2);
+      console.log(arr === arr2);
+      console.log(arr3);
+      console.log(arr === arr3);
+    </script>
+  </head>
+  <body></body>
+</html>

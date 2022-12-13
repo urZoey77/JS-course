@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象的复制（其他拷贝方式）</title>
+    <script>
+      const arr = ["Peach", "Qiu", "Yee"];
+      const arr2 = arr.slice();
+      // console.log(arr === arr2);
+      /*
+        ...（展开运算符）
+         - 可以将一个数组中的元素展开到另一个数组中或者作为函数的参数传递
+         - 通过它也可以对数组进行浅复制
+      */
+
+      // const arr3 = [arr[0], arr[1], arr[2]];
+      const arr3 = ["YEE", ...arr, "Fiona"];
+      // console.log(arr);
+      // console.log(arr3);
+      // console.log(arr === arr3);
+
+      function sum(a, b, c) {
+        return a + b + c;
+      }
+
+      console.log(sum(1, 2, 3));
+
+      const arr4 = [10, 20, 30];
+      console.log(sum(...arr4));
+
+      /* 
+        对象的复制
+          - Object.assign(目标对象，被复制的对象)
+            - 将被复制对象中的属性复制到目标对象里，并将目标对象返回
+          - 也可以使用展开运算符对对象进行复制
+      */
+      const obj = { name: "Peach", age: 18 };
+      const obj2 = Object.assign({}, obj); // 把后面对象的属性复制到前面的对象里
+      console.log(obj2);
+      console.log(obj === obj2);
+
+      const obj3 = { address: "SZ", ...obj }; // 将obj中的属性在新对象中展开
+      console.log(obj3);
+      console.log(obj === obj3);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组的方法</title>
+    <script>
+      const arr = ["Peach", "Qiu", "Yee", "kwan", "Yee", "Fiona", "666"];
+      /* 
+        indexOf()
+          - 获取元素在数组中第一次出现的索引
+          - 参数：
+            1. 要查询的元素
+            2. 查询的起止位置
+      */
+      console.log(arr.indexOf("Yee", 3));
+
+      /* 
+        lastIndexOf()
+          - 获取元素在数组中最后一次出现的位置
+          - 返回值：
+            找到了则返回元素的索引，
+            没有找到返回-1
+      */
+      console.log(arr.lastIndexOf("Yee", 6));
+
+      /* 
+        join()
+          - 将一个数组中的元素连接为一个字符串
+          - 参数：
+            指定一个字符串作为连接符
+      */
+      console.log(arr.join());
+      console.log(arr.join(" & "));
+
+      // const arr = ["Peach", "Qiu", "Yee", "kwan", "Yee", "Fiona", "666"];
+      /* 
+        slice()
+          - 用来截取数组（非破坏性方法）
+          - 参数：
+            - 截取的起始位置（包括该位置）
+            - 截取的结束位置（不包括该位置）
+              - 第二个参数可以省略不写，如果省略则会一直截取到最后
+              - 索引可以是负值，负值就是倒数
+              - 如果将两个参数全都省略，则可以对数组进行浅拷贝（浅复制）
+      */
+      console.log(arr.slice(0, 2));
+      console.log(arr.slice(1));
+      console.log(arr.slice(1, -1));
+      console.log(arr.slice());
+    </script>
+  </head>
+  <body></body>
+</html>

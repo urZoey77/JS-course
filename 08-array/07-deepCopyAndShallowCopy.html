@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>深拷贝和浅拷贝</title>
+    <script>
+      /* 
+      浅拷贝（shallow copy）
+        - 通常对对象的拷贝都是浅拷贝
+        - 浅拷贝顾名思义，只对对象的浅层进行复制（只复制一层）
+        - 如果对象中存储的数据是原始值，那么拷贝的深浅是不重要的
+        - 浅拷贝只会对对象本身进行复制，不会复制对象中的属性（或元素）
+      
+        深拷贝（deep copy）
+          - 深拷贝指不仅复制对象本身，还复制对象中的属性和元素
+          - 因为性能问题，通常情况下不太实用深拷贝
+    */
+
+      // 创建一个数组
+      const arr = [{ name: "Peach" }, { name: "QIU" }];
+      const arr2 = arr.slice();
+      console.log(arr === arr2);
+      console.log(arr[0] === arr2[0]);
+
+      //
+      const arr3 = structuredClone(arr); // 专门用来深拷贝的方法
+      console.log(arr3);
+      console.log(arr === arr3);
+      console.log(arr[0] === arr3[0]);
+    </script>
+  </head>
+  <body></body>
+</html>
