@@ -4,8 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>一个小问题</title>
+    <title>高阶函数</title>
     <script>
+      /* 
+        高阶函数：
+          - 如果一个函数的参数或者返回值是函数，则这个函数就称为高阶函数
+          - 为什么要将函数作为参数传递？（回调函数有什么用？）
+            - 将函数作为参数，意味着可以对另一个函数动态的传递代码
+      */
       class Person {
         name;
         age;
@@ -21,17 +27,6 @@
 
       const personArr = [p1, p2, p3];
 
-      // filter()函数用来对数组进行过滤
-      /* 
-        目前我们的函数只能过滤出数组中 age 属性小于 18 的对象
-        希望我们的过滤可以更加灵活
-        比如:过滤数组中age大于18的对象
-                      age大于60的对象
-                      age大于n的对象
-            过滤数组中name为xxx的对象
-        一个函数的参数也可以是函数，
-          如果将函数作为参数传递，那么我们就称这个函数为回调函数（callback）
-      */
       function filter(inArr, cb) {
         const newArray = [];
         for (i = 0; i < inArr.length; i++) {
@@ -42,11 +37,19 @@
         return newArray;
       }
 
-      function fn(a) {
-        return a.age < 18;
-      }
+      // 我们这种定义回调函数的形式比较少见，通常回调函数都是匿名函数
+      // function fn(a) {
+      //   return a.age < 18;
+      // }
 
-      let res = filter(personArr, fn);
+      let res = filter(personArr, (a) => a.name === "Peach");
+      console.log(res);
+      res = filter(personArr, (a) => a.age < 18);
+      console.log(res);
+
+      const arr = [666, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      // 过滤出所有偶数
+      res = filter(arr, (ele) => ele % 2 === 0);
       console.log(res);
     </script>
   </head>
