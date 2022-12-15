@@ -34,8 +34,37 @@
         return newArr;
       }
       let result = sort(arr);
-      console.log(arr);
-      console.log(result);
+      // console.log(arr);
+      // console.log(result);
+
+      class Person {
+        name;
+        age;
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+      }
+
+      const p1 = new Person("Peach", 20);
+      const p2 = new Person("Qiu", 12);
+      const p3 = new Person("Yee", 15);
+
+      const personArr = [p1, p2, p3];
+      // console.log(personArr);
+
+      // filter()函数用来对数组进行过滤
+      function filter(inArr) {
+        let newArray = [];
+        for (i = 0; i < inArr.length; i++) {
+          if (inArr[i].age <= 18) {
+            newArray.push(inArr[i]);
+          }
+        }
+        return newArray;
+      }
+      let res = filter(personArr);
+      console.log(res);
     </script>
   </head>
   <body></body>
