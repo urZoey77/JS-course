@@ -6,24 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>递归练习</title>
     <script>
-      /* 
-      一对兔子出生后的两个月后每个月都能生一对小兔子
-       - 要求编写一个函数，可以用来计算第N个月的兔子的数量
-    m: 1  2  3  4  5  6
-    p: 1  1  2  3  5  8
-      
-      */
-      console.time();
+      /*
+        一对兔子出生后的两个月后每个月都能生一对小兔子
+         - 要求编写一个函数，可以用来计算第N个月的兔子的数量
+      m: 1  2  3  4  5  6  7   8
+      p: 1  1  2  3  5  8  13  21
+
+        */
+      const objCache = {
+        0: 0,
+        1: 1,
+      };
+      // function getRabbitPair(month) {
+      //   if (month <= 0) return 0;
+      //   if (month === 1) return 1;
+      //   return getRabbitPair(month - 1) + getRabbitPair(month - 2);
+      // }
+
+      // console.log(getRabbitPair(8));
+
       function getRabbitPair(month) {
-        if (month <= 0) return 0;
-        if (month === 1) return 1;
-        return getRabbitPair(month - 1) + getRabbitPair(month - 2);
+        if (objCache[month] === undefined) {
+          objCache[month] = getRabbitPair(month - 1) + getRabbitPair(month - 2);
+        }
+        return objCache[month];
       }
 
-      console.log(getRabbitPair(8));
-      console.timeEnd();
-
-      console.time();
+      console.log(getRabbitPair(1000));
     </script>
   </head>
   <body></body>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组的方法03</title>
+    <script>
+      let arr = ["a", "c", "e", "f", "d", "b"];
+      arr = [1, 4, 5, 6, 3, 2, 8, 10, 0, 7, 9];
+      /*
+        sort()
+          - sort用来对数组进行排序（会改变原数组）
+          - 默认将数组升序排列
+            注意：默认按照Unicode编码进行排序
+            所以如果直接通过sort对数字进行排序
+              可能会得到一个不正确的结果
+          - 参数：
+            - 可以传递一个回调函数作为参数，通过回调函数来指定排序规则
+      */
+      // console.log(arr);
+      // arr.sort();
+      // arr.sort((a, b) => a - b); // 升序排列
+      // arr.sort((a, b) => b - a); // 降序排列
+
+      // console.log(arr);
+
+      /*
+        forEach()
+          - 用来遍历数组
+          - 它需要一个回调函数作为参数，这个回调函数会被调用多次
+            每次调用都会将数组中的数据作为参数传递
+          - 回调函数中有三个参数：
+            element - 数组中的元素
+            index - 数组的索引
+            array - 当前正遍历的数组
+
+
+      */
+      arr = ["peach", "qiu", "yee", "kwan"];
+      // arr.forEach((element, index, array) => {
+      //   // console.log(element);
+      //   // console.log(index);
+      //   // console.log(array);
+      // });
+
+      /*
+        filter() - 非破坏性方法
+          - 将数组中符合条件的元素保存到一个新数组中返回
+          - 需要一个回调函数作为参数，会为每一个元素去调用回调函数
+            并根据返回值来决定是否将元素添加到新数组
+          - 非破坏性方法，不会影响原数组，而是返回新数组
+      */
+      arr = [1, 2, 3, 4, 5, 6, 7, 8];
+      // 获取数组中的所有偶数
+      // let res = arr.filter((ele) => ele % 2 === 0);
+      // console.log(res);
+
+      /* 
+        map()
+          - 根据当前数组生成一个新数组
+          - 需要一个回调函数作为参数，
+            回调函数的返回值会成为新数组中的元素
+          - 非破坏性方法，不会影响原数组
+      */
+      // res = arr.map((ele) => ele * 2);
+      // console.log(res);
+
+      /* 
+        reduce()
+          - 可以用来将一个数组中的所有元素整合为一个值
+          - 参数：
+            1. 回调函数，通过回调函数来指定合并的规则
+            2. 可选参数，初始值
+      */
+
+      let res = arr.reduce((a, b) => a + b, 10);
+      console.log(res);
+    </script>
+  </head>
+  <body></body>
+</html>
