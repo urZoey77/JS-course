@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>递归</title>
+    <script>
+      /*
+        递归
+          - 调用自身的函数称为递归函数
+          - 递归的作用和循环是基本一致的
+
+      */
+      // 创建一个函数可以用来求任意数的阶乘
+      /*
+        1! = 1
+        2! = 2 x 1 = 2
+        3! = 3 x 2 x 1 = 6
+        n! = n x (n-1) x (n-2) x ... x 3 x 2 x 1
+      */
+      // function factorial(num) {
+      //   let res = 1;
+      //   for (let i = num; i > 1; i--) {
+      //     res = res * i;
+      //     // res = 1, res = 1 x 5
+      //     // res = 5, res = 1 x 5 x 4
+      //     // res = 20, res = 1 x 5 x 4 x 3
+      //     // res = 60, res = 1 x 5 x 4 x 3 x 2
+      //     // res = 120
+      //   }
+      //   return res;
+      // }
+      // let test = 5 * 4 * 3 * 2 * 1;
+      // console.log(`test=`, test);
+      // const res1 = factorial(5);
+      // console.log(res1);
+
+      /*
+        如何用递归来解决阶乘的问题？
+          5! = 4! x 5
+          4! = 3! x 4
+          3! = 2! x 3
+          2! = 1! x 1
+        递归的核心思想就是将一个大的问题拆分为一个一个小的问题，小的问题解决了，大的问题也就解决了
+
+        编写递归函数，一定要包含两个要件：
+          1. 基线条件 - 递归的终止条件
+          2. 递归条件 - 如何对问题进行拆分
+        
+        递归的作用和循环是一致的，不同点在于，递归思路的比较清晰简洁
+        循环的执行性能比较好
+          在开发中，一般的问题都可以通过循环解决，也是尽量去使用循环
+          少用递归
+      */
+
+      function factorial2(num) {
+        // 基线条件
+        if (num < 0 && -num % 2 === 0) {
+          return factorial2(-num - 1) * -num;
+        } else if (num < 0 && -num % 2 !== 0) {
+          return -(factorial2(-num - 1) * -num);
+        } else if (num === 1 || num === 0) {
+          return 1;
+        } else {
+          return factorial2(num - 1) * num;
+        }
+
+        // 递归条件
+        // num! = (num-1)! x num
+        // return (num-1)! x num
+      }
+
+      console.log(factorial2(-8));
+    </script>
+  </head>
+  <body></body>
+</html>
