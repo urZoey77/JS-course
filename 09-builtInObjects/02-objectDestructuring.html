@@ -5,7 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>对象的解构</title>
-    <script></script>
+    <script>
+      const obj = { name: "peach", age: 18, gender: "girl" };
+      let { name, age, gender } = obj;
+      console.log(name, age, gender); // 声明变量同时解构对象
+      let { address } = obj; // 没有的属性返回 undefined
+      console.log(address);
+
+      let { name: a, age: b, gender: c, address: d = "sz" } = obj;
+      console.log(a, b, c, d);
+    </script>
   </head>
   <body></body>
 </html>
