@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bind</title>
+    <script>
+      /* 
+        根据函数调用方式的不同，this的值也不同：
+            1. 以函数形式调用，this是window
+            2. 以方法形式调用，this是调用方法的对象
+            3. 构造函数中，this是新建的对象
+            4. 箭头函数没有自己的this，由外层作用域决定
+            5. 通过 call 和 apply 调用的函数，它们的第一个参数就是函数的this
+            6. 通过bind返回的函数，this由bind的第一个参数决定  
+        bind()是函数的方法，可以用来创建一个新的函数
+            - bind 可以为新函数绑定 this
+            - bind 可以为新韩淑绑定参数
+        箭头函数没有自身的this，它的this由外层作用域决定
+          也无法通过 call、apply 和 bind 修改它的this
+      */
+
+      function fn(a, b, c) {
+        console.log("fn is running");
+        console.log("a =", a, "b =", b, "c =", c);
+        console.log("this is", this);
+      }
+
+      fn();
+      const obj = { name: "peach" };
+      const newFn = fn.bind(obj, 10);
+      // newFn(300, 10, 20);
+
+      const arrFn = () => {
+        console.log(this);
+      };
+    </script>
+  </head>
+  <body></body>
+</html>

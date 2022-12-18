@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>call和apply</title>
+    <script>
+      /* 
+        根据函数调用方式的不同，this的值也不同：
+          1. 以函数形式调用，this是window
+          2. 以方法形式调用，this是调用方法的对象
+          3. 构造函数中，this是新建的对象
+          4. 箭头函数没有自己的this，由外层作用域决定
+          5. 通过 call 和 apply 调用的函数，它们的第一个参数就是函数的this
+          6. 通过bind返回的函数，this由bind的第一个参数决定
+      */
+      // 以函数形式调用，this是window
+      function fn() {
+        console.log("func is running~this is: ", this);
+      }
+      // fn();
+
+      // 以方法形式调用，this是调用方法的对象
+      const obj = { name: "peach", fn };
+      // obj.fn();
+
+      /* 
+        调用函数除了通过 函数() 这种形式外，还可以通过其他的方式来调用函数
+          比如 我们可以通过调用喊出的 call() 和 apply() 方法来调用函数
+            函数.call()
+            函数.apply()
+          call 和 apply 除了可以的调用函数，还可以用来指定函数中的this
+          call 和 apply 的第一个参数，会成为函数的this
+      */
+      // fn.call(obj);
+      // fn.apply(console);
+
+      function fn2(a, b) {
+        console.log("a =", a, "b =", b, "this is", this);
+      }
+      // fn2.call(obj, 1, 2); // 通过call方法调用函数时，函数的实参直接在第一个参数后一个一个的列出来
+      fn2.apply(obj, [1, 2]); // 通过apply方法调用函数，函数的输惨需要通过一个数组传递
+    </script>
+  </head>
+  <body></body>
+</html>
