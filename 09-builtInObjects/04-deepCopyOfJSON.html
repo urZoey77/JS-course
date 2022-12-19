@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用JSON进行深复制</title>
+    <script>
+      const obj = {
+        name: "Peach",
+        friend: { name: "Rachel" },
+      };
+
+      // 对 obj 进行浅复制
+      const obj2 = Object.assign({}, obj);
+      // console.log("obj2:", obj2); // obj2: {name: 'Peach', friend: {name: 'QIU'}}
+      obj2.friend.name = "QIU";
+      // console.log("obj:", obj); // obj: {name: 'Peach', friend: {name: 'QIU'}}
+      // console.log("obj.friend & obj2.friend :", obj.friend === obj2.friend); // true
+      // console.log("obj & obj2 :", obj === obj2); //false
+
+      // 对 obj 进行深复制01
+      const obj3 = structuredClone(obj);
+      // console.log(obj3); // obj3: {name: 'Peach', friend: {name: 'yee'}}
+      obj3.friend.name = "yee";
+      // console.log(obj); // obj: {name: 'Peach', friend: {name: 'QIU'}}
+      // console.log("obj.friend & obj3.friend :", obj.friend === obj3.friend); // false
+      // console.log("obj & obj3 :", obj === obj3); //true
+
+      // 利用 JSON 来完成深复制
+      const str = JSON.stringify(obj);
+      const obj4 = JSON.parse(str);
+      console.log("obj4:", obj4); // obj4: {name: 'Peach', friend: {name: 'QIU'}}
+      console.log("obj.friend & obj4.friend:", obj.friend === obj4.friend);
+      obj4.friend.name = "666";
+      console.log("obj:", obj); // obj: {name: 'Peach', friend: {name: 'QIU'}}
+    </script>
+  </head>
+  <body></body>
+</html>

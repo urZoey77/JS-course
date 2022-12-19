@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /*  */
+      const map = new Map();
+      map.set("name", "peach");
+      map.set("age", 18);
+      map.set({}, "heh");
+
+      // 将 map 转换为数组
+      // const arr = Array.from(map); // [['name','peach'],['age',18]]
+      // const arr2 = [...map];
+      // console.log(arr2);
+
+      const map2 = new Map([
+        ["name", "qiu"],
+        ["age", 18],
+        [{}, () => {}],
+      ]);
+      // console.log(map2);
+
+      // 遍历 map
+      for (const entry of map) {
+        const [key, value] = entry;
+        console.log(entry, key, value);
+      }
+
+      map.forEach((key, value) => {
+        console.log(key, value);
+      });
+
+      /* 
+        map.key() - 获取map的所有的key
+        may.value() - 获取map的所有的value
+      */
+    </script>
+  </head>
+  <body></body>
+</html>
