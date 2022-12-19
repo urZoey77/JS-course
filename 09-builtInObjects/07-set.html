@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>set</title>
+    <script>
+      /* 
+        Set
+          - Set 用来创建一个集合
+          - 它的功能和数组类似，不同点在于 Set 中不能存储重复的数据
+        
+        - 使用方式：
+          创建
+            - new Set()
+            - new Set([...])根据数组创建一个集合
+          方法
+            - size 获取数量
+            - add() 添加元素
+            - has() 检查元素
+            - delete() 删除元素
+      */
+
+      // 创建一个 Set
+      const set = new Set();
+
+      // 向 set中添加数据
+      set.add(10);
+      set.add("peach");
+      set.add(10);
+
+      console.log(set);
+      console.log(typeof set);
+      console.log(set.has(10));
+
+      for (value of set) {
+        console.log(value);
+      }
+
+      const arr = [...set];
+      console.log(arr);
+
+      // 利用 set 可以快速对数组去重
+      const arr2 = [1, 2, 1, 1, 2, 3, 4, 5, 6, 5, 6, 7];
+      const set2 = new Set(arr2);
+      const newArr = [...set2];
+      console.log(set2);
+      console.log(newArr);
+    </script>
+  </head>
+  <body></body>
+</html>
