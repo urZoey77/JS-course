@@ -21,13 +21,17 @@
           3. 内部函数要作为返回值返回
       */
       function outer() {
+        console.log(`outer is running`);
         let num = 0;
         return () => {
           num++;
           console.log(num);
         };
       }
+      // 此时用 newFn 接收的是 outer() 的返回值，即 return 的 匿名函数，所以newFn为匿名函数
+      // 所以调用了一次 outer() 此时 num = 0
       const newFn = outer();
+      // 从此处开始，调用的都是 return 的匿名函数（被赋值到 newFn 了），所以 num 不会被重新赋值为0
       newFn();
       newFn();
       newFn();
