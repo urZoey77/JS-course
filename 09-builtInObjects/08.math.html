@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math</title>
+    <script>
+      /* 
+        Math
+          - Math 一个工具类
+          - Math 中为我们提供了数学运算相关的一些常量和方法
+            - 常量：
+              Math.PI 圆周率
+            
+            - 方法：
+              Math.abs() 求一个数的绝对值
+              Math.min() 求多个值中的最小值
+              Math.max() 求多个值中的最大值
+              Math.pow(x,y) 求x的y次幂 
+              Math.sqrt() 求一个数的平方根
+              取整方法
+              Math.floor() 向下取整
+              Math.ceil() 向上取整
+              Math.round() 四舍五入取整
+              Math.trunc() 直接去除小数点
+              floor() 和 trunc()的主要区别在于对负数使用时
+
+              Math.random() 生成一个 0-1 之间的随机数
+      */
+
+      let res;
+      console.log("Math.floor 3.9999: ", Math.floor(3.9999));
+      console.log("Math.ceil 3.1: ", Math.ceil(3.1));
+      console.log("Math.round 3.5: ", Math.round(3.5));
+      console.log("Math.round 3.1: ", Math.round(3.1));
+      console.log("Math.round -3.5: ", Math.round(-3.5));
+      console.log("Math.trunc 3.9999: ", Math.trunc(3.9999));
+
+      console.log("Math.random :", Math.random());
+
+      /* 
+        生成 0-5 之间的随机数
+          生成 0-x 之间的随机数：
+            Math.round(Math.random() * x)
+            Math.floor(Math.random() * (x+1))
+          生成 x-y 之间的随机数：
+            Math.ceil(Math.random() * )
+      */
+      for (let i = 0; i < 10; i++) {
+        let res = Math.ceil(5 * Math.random());
+        console.log(res);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
