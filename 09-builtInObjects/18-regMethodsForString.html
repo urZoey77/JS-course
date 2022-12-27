@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>字符串的正则方法</title>
+    <script>
+      /*
+        split()
+          - 可以根据正则表达式来对一个字符串进行拆分
+        search()
+          - 可以去搜索符合正则表达式的内容第一次在字符串中出现的位置
+        replace()
+          - 根据正则表达式替换字符串中的指定内容
+        match()
+          - 根据正则表达式匹配字符串中符合要求的内容
+        matchAll()
+          - 根据正则表达式去匹配字符串中符合要求的内容（必须设置g进行全局匹配）
+          - 它返回的是一个迭代器
+      */
+      let str = "a@b@c@d";
+      let res = str.split("@");
+      console.log(res);
+
+      str = "孙悟空abc猪八戒adc沙和尚";
+      res = str.split(/a[a-z]c/gi);
+      console.log(res);
+
+      str =
+        "dajsdh13715678903jasdlakdkjg13457890657djashdjka13811678908sdadadasd";
+      res = str.search(/1[3-9]\d{9}/);
+      console.log(res);
+      res = str.replace(/1[3-9]\d{9}/gi, "666");
+      console.log(res);
+      res = str.match(/1[3-9]\d{9}/gi);
+      console.log(res);
+      res = str.matchAll(/1[3-9]\d{9}/g);
+      for (let item of res) {
+        console.log(item[0]);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

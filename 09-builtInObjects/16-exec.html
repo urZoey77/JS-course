@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>exec</title>
+    <script>
+      /* 
+        re.exec()
+          - 获取字符串中符合正则表达式的内容
+      */
+      let str = "abcaecafcacc";
+
+      // 提取出str中符合axc格式的内容
+      // g表示全局匹配
+      let re = /a(([a-z])c)/gi;
+
+      let res = re.exec(str);
+      // console.log(res);
+      while (res) {
+        console.log(res[0], res[1], res[2]);
+        res = re.exec(str);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

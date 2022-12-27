@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>练习</title>
+    <script>
+      /* 
+        dajsdh13715678903jasdlakdkjg13457890657djashdjka13811678908sdadadasd
+        要求编写正则表达式，将手机号在该字符串中提取出来
+      */
+      let str =
+        "dajsdh13715678903jasdlakdkjg13457890657djashdjka13811678908sdadadasd";
+      // let re = /1[3-9]\d{9}/g;
+      // let res = re.exec(str);
+      // while (res) {
+      //   console.log(res[0]);
+      //   res = re.exec(str);
+      //
+
+      /* 
+        将提取出来的手机号以 13x **** xxxx 的形式展现
+      */
+      let re = /(1[3-9]\d)\d{4}(\d{4})/g;
+      let res = re.exec(str);
+      while (res) {
+        console.log(res[1] + "****" + res[2]);
+        res = re.exec(str);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
