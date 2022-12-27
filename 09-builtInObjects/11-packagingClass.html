@@ -11,6 +11,20 @@
           通过 new String() 可以创建 String 类型的对象
           通过 new Number() 可以创建 Number 类型的对象
           通过 new Boolean() 可以创建 Boolean 类型的对象
+            - 但是千万不要这么做
+
+          包装类：
+            JS中一共有5个包装类
+              String -> 字符串包装为String对象
+              Number -> 数值包装为Number对象
+              Boolean -> 布尔值包装为Boolean对象
+              BigInt -> 大整数包装为BigInt对象
+              Symbol -> 符号包装为Symbol对象
+              - 通过包装类可以将一个原始值包装为一个对象
+                当我们对一个原始值调用方法或属性时，JS解释器会临时将原始值包装为对应的对象
+                然后调用这个对象的属性或方法
+            
+          - 由于原始值会被临时转换为对应的对象，这就意味着对象中的方法都可以直接通过原始值来调用
       */
 
       let str = new String("hello");

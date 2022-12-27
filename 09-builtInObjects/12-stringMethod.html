@@ -12,22 +12,22 @@
           - "hello" -> ["h","e","l","l","o"]
           - 字符串很多方法都和数组是非常类似的
           - 属性和方法
-              length 获取字符串的长度
+              length 获取字符串的长度 ※
               字符串[索引] 获取指定位置的字符
               str.at() （实验方法）
                 - 根据索引获取字符，可以接受负索引
               str.concat()
                 - 用来连接两个或多个字符串
-              str.includes(ele,starLocation) 第二个参数是查找的起始位置
+              str.includes(ele,starLocation) 第二个参数是查找的起始位置 ※
                 - 用来检查字符串中是否包含某个内容
                   有返回 true
                   没有返回 false
               str.indexOf()
               str.lastIndexOf()
                 - 查询字符串中是否包含某个内容
-              str.startWith()
+              str.startWith() ※
                 - 检查一个字符串是否以指定内容开头
-              str.endsWith()
+              str.endsWith() ※
                 - 检查一个字符串是否以指定内容结尾
               str.padStart()
               str.padEnd()
@@ -36,16 +36,22 @@
                 - 使用一个新字符串替换一个指定内容
               str.replaceAll()
                 - 使用一个新字符串替换所有指定内容
-              str.slice()
+              str.slice() ※
                 - 对字符串进行切片
               str.substring()
                 - 截取字符串（可以自动交换参数的前后）
-              str.split()
+              str.split() ※
                 - 用来将一个字符串拆分为一个数组
-              str.toLowerCase()
+              str.toLowerCase() ※
                 - 将字符串转换为小写
-              str.toUpperCase()
+              str.toUpperCase() ※
                 - 将字符串转换为大写
+              str.trim() ※
+                - 去除前后空格
+              str.trimStart() ※
+                - 去除开始空格
+              str.trimEnd() ※
+                - 去除结束空格
       */
       let str = "hello hello how are you";
       str2 = str.replace("hello", "HI"); // 只会替换一个
