@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>正则表达式</title>
+    <script>
+      /* 
+        量词
+          {m} 正好 m 个
+          {m,} 至少 m 个
+          {m,n} m-n 个
+          + 一个以上，相当于{1,}
+          * 任意数量，有没有都行
+          ? 0-1次，相当于{0,1}
+      */
+      let re = /a{3}/;
+      let res = re.test("aaa");
+      console.log(res);
+    </script>
+  </head>
+  <body></body>
+</html>

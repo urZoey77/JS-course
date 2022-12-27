@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>正则表达式中的字符</title>
+    <script>
+      /* 
+        1. 在正则表达式中大部分字符都可以直接写
+        2. | 在正则表达式中表示 或
+        3. [] 表示或（字符集）
+            [a-z] 任意的小写字母
+            [A-Z] 任意的大写字母
+            [a-zA-Z] 任意的字母
+            [0-9] 任意数字
+        4. [^] 表示除了
+        5. . 表示除了换行外的任意字符
+        6. 在正则表达式中使用\作为转义字符
+        7. 其他的字符集
+            \w 任意的单词字符 [A-Za-z0-9_]
+            \W 除了单词字符 [^A-Za-z0-9_]
+            \d 任意数字 [0-9]
+            \D 除了数字 [^0-9]
+            \s 空格
+            \S 除了空格
+            \b 单词边界
+            \B 除了单词边界
+        8. 开头和结尾
+            ^ 表示字符串的开头
+            $ 表示字符串的结尾
+      */
+      let re = /a|b/;
+      re = /[a-z]/i; // 匹配模式 i 表示忽略大小写
+      re = /[^a-z]/; // 匹配包含小写字母以外内容的字符串
+      re = /./;
+      re = /^a/; // 匹配开始位置的a
+      re = /a$/; // 匹配结束位置的a
+      re = /^a$/; // 只匹配字母a，完全匹配，要求字符串和必须和正则完全一致
+      let res = re.test("#");
+      console.log(res);
+    </script>
+  </head>
+  <body></body>
+</html>
