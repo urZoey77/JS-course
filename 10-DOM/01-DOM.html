@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom's HelloWorld</title>
+    <script></script>
+  </head>
+  <body>
+    <button id="btn">点我一下</button>
+
+    <script>
+      /* 
+        要使用 DOM 来操作网页，我们需要浏览器至少先给我一个对象
+          才能去完成各种操作
+        所以浏览器已经为我们提供了一个document对象，它是一个全局变量可以直接使用
+          document代表的是整个的网页
+      */
+
+      // console.log(document);
+
+      // 获取btn对象
+      const btn = document.getElementById("btn");
+      // console.log(btn);
+
+      // 修改 btn 中的文字
+      btn.innerText = "click me";
+    </script>
+  </body>
+</html>
