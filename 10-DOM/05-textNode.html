@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文本节点</title>
+  </head>
+  <body>
+    <div id="box1">
+      <span>i'm box1</span>
+    </div>
+    <script>
+      /* 
+        在DOM中，网页中所有的文本内容都是文本节点的对象,
+          可以通过元素来获取其中的文本节点对象，但是我们通常不会这么做
+
+          我们可以直接通过元素去修改其中的文本
+            修改文本的三个属性
+              element.textContent 获取或修改元素中的文本内容
+                - 获取的时标签中的内容，不会考虑css样式
+                "i'm box1"
+              element.innerText 获取或修改元素中的文本内容 
+                "\n      i'm box1\n    "
+                当字符串中有标签时，它会自动会标签进行转义
+                - 获取内容时，它会考虑css样式
+                - 通过innerText去读取CSS样式，会触发网页的重排（计算CSS样式）
+              element.innerHTML 获取或修改元素中的html代码 
+                "\n      <span>i'm box1</span>\n    "
+                它可以直接向元素中添加 html 代码
+                innerHTML插入内容时，有被xss注入的风险
+      */
+      const box1 = document.getElementById("box1");
+
+      const text = box1.firstChild;
+
+      // box1.innerText = "changes";
+      // console.log(box1.textContent);
+      // box1.textContent = "666";
+      // console.log(box1.textContent);
+
+      console.log(text);
+    </script>
+  </body>
+</html>

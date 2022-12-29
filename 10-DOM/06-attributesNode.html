@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>属性节点</title>
+  </head>
+  <body>
+    <input class="aa" type="text" name="username" value="admin" />
+    <script>
+      /* 
+        disabled的原理
+          point events
+        属性节点（Attr）
+          - 在 DOM 也是一个对象，通常不需要获取对象而是直接通过元素即可完成对其的各种操作
+          - 如何操作属性节点：
+            方式一：
+              读取：元素.属性名(注意:class属性需要使用className来读取)
+                    读取一个布尔值时，会返回true或false
+              修改：元素.属性名 = 属性值
+            方式二： 
+              读取：元素.getAttribute(属性名)
+              修改：元素.setAttribute(属性名,属性值)
+              删除：元素.removeAttribute(属性名)
+      */
+
+      // const input = document.getElementsByName("username");
+      const input = document.querySelector("[name=username]");
+      console.log(input.getAttribute("type"));
+    </script>
+  </body>
+</html>
