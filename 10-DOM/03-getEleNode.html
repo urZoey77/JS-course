@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>获取元素节点</title>
+  </head>
+  <body>
+    <button id="btn">Click me</button>
+    <span class="s1">i'm span</span>
+    <span class="s1">i'm span</span>
+    <span class="s1">i'm span</span>
+    <span class="s1">i'm span</span>
+    <span class="s1">i'm span</span>
+    <div>我是DIV</div>
+    <div>我是DIV</div>
+    <div>我是DIV</div>
+    <div>我是DIV</div>
+    <div>我是DIV</div>
+
+    <form>
+      <input type="text" name="'username" />
+      <input type="radio" name="gender" value="male" />男
+      <input type="radio" name="gender" value="female" />女
+    </form>
+    <script>
+      /* 
+        元素节点对象（element）
+          - 在网页中，每一个标签都是一个元素节点
+          - 如何获取元素节点对象？
+              1. 通过document对象来获取元素节点
+              2. 通过document对象来创建元素对象
+          - 通过document来获取已有的元素节点
+              document.getElementById()
+                - 根据 id 获取一个元素节点对象
+              document.getElementsByClassName()
+                - 根据元素的class属性值获取一组元素节点对象
+                - 返回的是一个类数组对象
+                - 该方法返回的结果是一个实时更新的集合
+                  当网页中新添加元素时，集合也会实时更新
+              document.getElementsByTagName()
+                - 根据标签名获取一组元素节点对象
+                - 返回的结果是一个实时更新的集合
+                - document.getElementsByTagName("*") 获取页面中所有的元素
+              document.getElementsByName()
+                - 根据Name属性来获取一组元素节点对象
+                - 返回的结果是一个实时更新的集合
+                - 主要用于表单项
+              document.querySelectorAll()
+                - 根据选择器去页面中查询元素
+                - 会返回一个类数组（不会实时更新）
+              document.querySelector()
+                - 根据选择器去页面中查询第一个符合条件的元素
+          - 创建一个元素节点
+              document.createElement()
+                - 根据标签名创建一个元素节点对象
+
+      */
+
+      const btn = document.getElementById("btn");
+
+      const spans = document.getElementsByClassName("s1");
+
+      const divs = document.getElementsByTagName("div");
+
+      const genderInput = document.getElementsByName("gender");
+
+      const divs2 = document.querySelectorAll("div");
+
+      const div = document.querySelector("div");
+
+      const h2 = document.createElement("h2");
+
+      console.log(h2);
+    </script>
+  </body>
+</html>
