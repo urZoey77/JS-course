@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      请选择你的爱好：
+      <input type="checkbox" id="check-all" />全选
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        name="hobby"
+        value="pingPang"
+        id="pingPang"
+      />乒乓球
+      <input
+        type="checkbox"
+        name="hobby"
+        value="basketball"
+        id="basketball"
+      />篮球
+      <input
+        type="checkbox"
+        name="hobby"
+        value="badminton"
+        id="badminton"
+      />羽毛球
+      <input type="checkbox" name="hobby" value="football" id="football" />足球
+    </div>
+    <div>
+      <button type="button" id="all">全选</button>
+      <button type="button" id="no">取消</button>
+      <button type="button" id="reverse">反选</button>
+      <button type="button" id="send">提交</button>
+    </div>
+    <script>
+      const button_all = document.getElementById("all");
+      const button_no = document.getElementById("no");
+      const button_reverse = document.getElementById("reverse");
+      const button_send = document.getElementById("send");
+      const input_checkAll = document.getElementById("check-all");
+      const input_pingPang = document.getElementById("pingPang");
+      const input_basketball = document.getElementById("basketball");
+      const input_badminton = document.getElementById("badminton");
+      const input_football = document.getElementById("football");
+
+      button_all.addEventListener("click", () => {
+        input_checkAll.checked = true;
+        input_pingPang.checked = true;
+        input_basketball.checked = true;
+        input_badminton.checked = true;
+        input_football.checked = true;
+      });
+
+      button_no.addEventListener("click", () => {
+        input_checkAll.checked = false;
+        input_pingPang.checked = false;
+        input_basketball.checked = false;
+        input_badminton.checked = false;
+        input_football.checked = false;
+      });
+    </script>
+  </body>
+</html>

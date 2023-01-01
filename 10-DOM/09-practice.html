@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 450px;
+        margin: 50px auto;
+        text-align: center;
+      }
+      .demo {
+        height: 337.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <!-- 外部的容器-->
+      <div class="img-wrapper">
+        <img id="img1" class="demo" alt="null" />
+        <!-- <img id="img2" class="demo" src="./images/2.JPG" alt="null" />
+        <img id="img3" class="demo" src="./images/3.JPG" alt="null" />
+        <img id="img4" class="demo" src="./images/4.JPG" alt="null" />
+        <img id="img5" class="demo" src="./images/5.JPG" alt="null" /> -->
+      </div>
+      <div class="btn-wrapper">
+        <button id="btnLeft">Previous page</button>
+        <button id="btnRight">Next page</button>
+      </div>
+    </div>
+
+    <script>
+      /*
+        点击按钮切换图片
+      */
+      const btnLeft = document.getElementById("btnLeft");
+      const img = document.getElementById("img1");
+      let index = 1;
+      img.src = `./images/${index}.JPG`;
+
+      btnLeft.addEventListener("click", () => {
+        // 定位当前图片
+        // 切换上一张图片
+
+        if (index - 1 >= 1 && index - 1 <= 5) {
+          img.src = `./images/${index - 1}.JPG`;
+          index--;
+        } else if (index - 1 < 1) {
+          img.src = `./images/5.JPG`;
+          index = 5;
+        }
+      });
+      const btnRight = document.getElementById("btnRight");
+      btnRight.addEventListener("click", () => {
+        // 定位当前图片
+        // 切换下一张图片
+        if (index + 1 >= 1 && index + 1 <= 5) {
+          img.src = `./images/${index + 1}.JPG`;
+          index++;
+        } else if (index + 1 > 5) {
+          img.src = `./images/1.JPG`;
+          index = 1;
+        }
+      });
+    </script>
+  </body>
+</html>

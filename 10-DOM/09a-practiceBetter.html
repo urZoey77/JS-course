@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 450px;
+        margin: 50px auto;
+        text-align: center;
+      }
+      .demo {
+        height: 337.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="img-wrapper">
+        <img id="img1" class="demo" alt="null" />
+      </div>
+      <div id="info">6</div>
+      <div class="btn-wrapper">
+        <button id="btnLeft">Previous page</button>
+        <button id="btnRight">Next page</button>
+      </div>
+    </div>
+
+    <script>
+      /*
+        点击按钮切换图片
+      */
+      const btnLeft = document.getElementById("btnLeft");
+      const btnRight = document.getElementById("btnRight");
+      const img = document.getElementById("img1");
+      const info = document.getElementById("info");
+
+      let index = 1;
+      const maxSize = 5;
+      function update() {
+        img.src = `./images/${index}.JPG`;
+        info.innerText = `${index}/${maxSize}`;
+      }
+      update();
+      btnLeft.addEventListener("click", () => {
+        index = index === 1 ? maxSize : index - 1;
+        update();
+      });
+      btnRight.addEventListener("click", () => {
+        index = index === maxSize ? 1 : index + 1;
+        update();
+      });
+    </script>
+  </body>
+</html>

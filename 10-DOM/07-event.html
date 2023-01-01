@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件</title>
+  </head>
+  <body>
+    <button id="btn">点我一下</button>
+    <script>
+      /* 
+        事件（event）
+          - 事件就是用户和页面之间发生的交互行为
+            比如：点击按钮、鼠标移动、双击按钮、敲击键盘、松开按键...
+          - 可以通过为事件绑定响应函数（回调函数），来完成和用户之间的交互
+          - 绑定响应函数的方式：
+            1. 可以直接在元素的属性中设置
+            2. 可以通过为元素的指定属性设置回调函数的形式来绑定事件
+                一个事件只能绑定一个响应函数
+            3. 可以通过元素 addEventListener()方法来绑定事件
+
+      */
+      // 获取到按钮对象
+      const btn = document.getElementById("btn");
+      // 为按钮对象的事件属性设置响应函数
+      // btn.onclick = function () {
+      //   alert("click");
+      // };
+
+      btn.addEventListener("click", function () {
+        alert("hhhh");
+      });
+    </script>
+  </body>
+</html>
