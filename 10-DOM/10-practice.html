@@ -48,6 +48,25 @@
       const input_basketball = document.getElementById("basketball");
       const input_badminton = document.getElementById("badminton");
       const input_football = document.getElementById("football");
+      function checkAllJudge() {
+        if (
+          input_badminton.checked === true &&
+          input_pingPang.checked === true &&
+          input_basketball.checked === true &&
+          input_football.checked === true
+        ) {
+          input_checkAll.checked = true;
+        } else {
+          input_checkAll.checked = false;
+        }
+      }
+
+      function sending(...ele) {
+        let sendingArr = ele.filter((hobby) => hobby.checked === true);
+        let resArr = sendingArr.map((value) => value.value);
+        console.log("爱好是：", resArr.join("、"));
+        alert("Hobby is " + resArr.join(" & "));
+      }
 
       button_all.addEventListener("click", () => {
         input_checkAll.checked = true;
@@ -63,6 +82,23 @@
         input_basketball.checked = false;
         input_badminton.checked = false;
         input_football.checked = false;
+      });
+
+      button_reverse.addEventListener("click", () => {
+        input_basketball.checked = !input_basketball.checked;
+        input_badminton.checked = !input_badminton.checked;
+        input_football.checked = !input_football.checked;
+        input_pingPang.checked = !input_pingPang.checked;
+        checkAllJudge();
+      });
+
+      button_send.addEventListener("click", () => {
+        sending(
+          input_badminton,
+          input_basketball,
+          input_football,
+          input_pingPang
+        );
       });
     </script>
   </body>
