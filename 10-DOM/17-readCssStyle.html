@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改css样式</title>
+    <style>
+      .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+
+      .box1::before {
+        content: "yes";
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">click</button>
+
+    <hr />
+
+    <div class="box1"></div>
+    <script>
+      /*
+        点击按钮后读取元素的css样式
+      */
+      const btn = document.getElementById("btn");
+      const box1 = document.querySelector(".box1");
+      btn.addEventListener("click", function () {
+        /* 
+          getComputerStyle()
+            - 它会返回一个对象，这个对象中包含了当前元素所有生效的样式
+            - 参数：
+              1. 要获取样式的对象
+              2. 要获取的伪元素
+            - 返回值：
+              返回的是一个对象，对象中存储了当前元素的样式
+            - 注意事项
+              获取到的值如果需要用于计算，一定要记得获取数值再相加，计算完后再把单位添加回去
+              样式对象中返回的样式值，不一定能拿来直接计算
+                所以使用时，一定要确保值是可以计算的才去计算
+        */
+        const styleObj = getComputedStyle(box1);
+        console.log(styleObj.backgroundColor);
+
+        const beforeStyle = getComputedStyle(box1, "::before");
+        console.log(beforeStyle.color);
+
+        box1.style.width = parseInt(styleObj.width) + 100 + "px";
+      });
+    </script>
+  </body>
+</html>

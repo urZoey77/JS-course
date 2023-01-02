@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 400px;
+        margin: 100px auto;
+        text-align: center;
+      }
+
+      table {
+        width: 400px;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+
+      td,
+      th {
+        border: 1px black solid;
+        padding: 10px 0;
+      }
+
+      form div {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <table>
+        <tbody id="tbody1">
+          <tr>
+            <th>姓名</th>
+            <th>邮件</th>
+            <th>薪资</th>
+            <th>操作</th>
+          </tr>
+          <tr>
+            <td>孙悟空</td>
+            <td>swk@hgs.com</td>
+            <td>10000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+          <tr>
+            <td>猪八戒</td>
+            <td>zbj@glz.com</td>
+            <td>8000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+          <tr>
+            <td>沙和尚</td>
+            <td>shs@lsh.com</td>
+            <td>6000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="#">
+        <div>
+          <label for="name">姓名</label>
+          <input autocomplete="off" type="text" id="name" />
+        </div>
+        <div>
+          <label for="email">邮件</label>
+          <input autocomplete="off" type="email" id="email" />
+        </div>
+        <div>
+          <label for="salary">薪资</label>
+          <input autocomplete="off" type="number" id="salary" />
+        </div>
+        <button id="addBtn" type="button">添加</button>
+      </form>
+    </div>
+    <script>
+      {
+        /*
+        点击删除超链接后，删除当前的员工数据
+      */
+        // 获取所有的超链接
+        const delLinks = document.querySelectorAll("[href='javascript:;']");
+
+        function delEmp() {
+          const delRes = this.parentNode.parentNode;
+          const empName = delRes.firstElementChild.textContent;
+          confirm(`确认要删除【${empName}】吗？`) ? delRes.remove() : false;
+        }
+
+        for (let i = 0; i < delLinks.length; i++) {
+          delLinks[i].addEventListener("click", delEmp);
+        }
+      }
+      /*
+        点击添加按钮，将用户的信息插入到表格中
+        点击添加按钮，会生成
+        <tr>
+          <td>用户输入的姓名</td>
+          <td>用户输入的邮件</td>
+          <td>用户输入的薪资</td>
+          <td><a href="javascript:;">删除</a></td>
+        </tr>
+      */
+
+      // 获取添加按钮
+      const addBtn = document.getElementById("addBtn");
+      addBtn.addEventListener("click", function () {
+        // 获取用户输入的数据
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const salaryInput = document.getElementById("salary");
+
+        // 获取tbody
+        const tbody1 = document.getElementById("tbody1");
+        // 往tbody最后面添加刚刚获取到的数据
+
+        // 创建一个tr
+        const tr = document.createElement("tr");
+
+        {
+          // 容易被xss攻击
+          // tr.innerHTML = `<tr>
+          //   <td>${nameInput.value}</td>
+          //   <td>${emailInput.value}</td>
+          //   <td>${salaryInput.value}</td>
+          //   <td><a href="javascript:;">删除</a></td>
+          // </tr>`;
+          // tbody1.insertAdjacentElement("beforeend", tr);
+        }
+
+        {
+          // 手动创建元素
+          const nameTd = document.createElement("td");
+          const emailTd = document.createElement("td");
+          const salaryTd = document.createElement("td");
+
+          // 添加文本
+          nameTd.textContent = nameInput.value;
+          emailTd.textContent = emailInput.value;
+          salaryTd.textContent = salaryInput.value;
+
+          // 将三个td添加到tr中
+          tr.appendChild(nameTd);
+          tr.appendChild(emailTd);
+          tr.appendChild(salaryTd);
+          tr.insertAdjacentHTML(
+            "beforeend",
+            "<td><a href='javascript:;'>删除</a></td>"
+          );
+          tbody1.insertAdjacentElement("beforeend", tr);
+        }
+
+        const newTr = tr.lastElementChild.lastElementChild;
+        newTr.addEventListener("click", delEmp);
+
+        nameInput.value = "";
+        emailInput.value = "";
+        salaryInput.value = "";
+      });
+    </script>
+  </body>
+</html>

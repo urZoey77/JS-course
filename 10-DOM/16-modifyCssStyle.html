@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改css样式</title>
+    <style>
+      .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">click</button>
+
+    <hr />
+
+    <div class="box1"></div>
+    <script>
+      /*
+        点击按钮后修改box1的宽度
+      */
+      const btn = document.getElementById("btn");
+      const box1 = document.querySelector(".box1");
+      btn.addEventListener("click", function () {
+        // 修改box1的样式
+        // 修改样式的方式：元素.style.样式名 = 样式值
+        // style修改的是内联样式
+        box1.style.width = "400px";
+        box1.style.height = "400px";
+        // 注意：如果样式名中含有-,则需要将样式表修改为驼峰命名法
+        box1.style.backgroundColor = "purple";
+      });
+    </script>
+  </body>
+</html>
