@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 400px;
+        margin: 100px auto;
+        text-align: center;
+      }
+
+      table {
+        width: 400px;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+
+      td,
+      th {
+        border: 1px black solid;
+        padding: 10px 0;
+      }
+
+      form div {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <table>
+        <tbody>
+          <tr>
+            <th>姓名</th>
+            <th>邮件</th>
+            <th>薪资</th>
+            <th>操作</th>
+          </tr>
+          <tr>
+            <td>孙悟空</td>
+            <td>swk@hgs.com</td>
+            <td>10000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+          <tr>
+            <td>猪八戒</td>
+            <td>zbj@glz.com</td>
+            <td>8000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+          <tr>
+            <td>沙和尚</td>
+            <td>shs@lsh.com</td>
+            <td>6000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="#">
+        <div>
+          <label for="name">姓名</label>
+          <input type="text" id="name" />
+        </div>
+        <div>
+          <label for="email">邮件</label>
+          <input type="email" id="email" />
+        </div>
+        <div>
+          <label for="salary">薪资</label>
+          <input type="number" id="salary" />
+        </div>
+        <button>添加</button>
+      </form>
+    </div>
+    <script>
+      /*
+        点击删除超链接后，删除当前的员工数据
+      */
+      // 获取所有的超链接
+      const del = document.querySelectorAll("[href='javascript:;']");
+
+      function delEmp() {
+        const delRes = this.parentNode.parentNode;
+        const empName = delRes.firstElementChild.textContent;
+        confirm(`确认要删除【${empName}】吗？`) ? delRes.remove() : false;
+      }
+
+      for (let i = 0; i < del.length; i++) {
+        del[i].addEventListener("click", delEmp);
+      }
+    </script>
+  </body>
+</html>

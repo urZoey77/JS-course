@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM元素的修改</title>
+  </head>
+  <body>
+    <button id="btn01">按钮1</button>
+    <button id="btn02">按钮2</button>
+    <hr />
+    <ul id="list">
+      <li id="swk">孙悟空</li>
+      <li id="zbj">猪八戒</li>
+      <li id="shs">沙和尚</li>
+    </ul>
+    <script>
+      /*
+        点击按钮后，向ul中添加一个唐僧
+      */
+      // 获取 ul
+      const list = document.getElementById("list");
+      // 获取按钮
+      const btn01 = document.getElementById("btn01");
+      btn01.addEventListener("click", function () {
+        // <li id="ts">唐僧</li>
+        // 创建一个li
+        const li = document.createElement("li");
+        // 向 li 中添加一个文本
+        li.textContent = "唐僧";
+        // 给 li 添加 id
+        li.id = "ts";
+        // appendChild 用于给一个节点添加子节点
+        // list.appendChild(li);
+
+        // insertAdjacenElement() 可以向元素的任意位置添加元素
+        // 两个参数：1.要添加的位置 2.要添加的元素
+        /*
+          beforeend 结束标签的前面
+          afterbegin 开始标签的后面
+          beforebegin 开始标签的前面（兄弟元素）
+          afterend 结束标签的后面（兄弟元素）
+        */
+        // list.insertAdjacentElement("beforebegin", li);
+
+        list.insertAdjacentHTML("beforeend", "<li id='bgj'>白骨精</li>");
+      });
+
+      const btn02 = document.getElementById("btn02");
+      btn02.addEventListener("click", function () {
+        // 创建一个蜘蛛精替换孙悟空
+        const li = document.createElement("li");
+        li.textContent = "蜘蛛精";
+        li.id = "zzj";
+        // 获取孙悟空
+        const swk = document.getElementById("swk");
+        // replace() 使用一个元素替换掉当前元素
+        swk.replaceWith(li);
+
+        // remove() 删除当前元素
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 400px;
+        margin: 100px auto;
+        text-align: center;
+      }
+
+      table {
+        width: 400px;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+
+      td,
+      th {
+        border: 1px black solid;
+        padding: 10px 0;
+      }
+
+      form div {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <table>
+        <tbody>
+          <tr>
+            <th>姓名</th>
+            <th>邮件</th>
+            <th>薪资</th>
+            <th>操作</th>
+          </tr>
+          <tr>
+            <td>孙悟空</td>
+            <td>swk@hgs.com</td>
+            <td>10000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+          <tr>
+            <td>猪八戒</td>
+            <td>zbj@glz.com</td>
+            <td>8000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+          <tr>
+            <td>沙和尚</td>
+            <td>shs@lsh.com</td>
+            <td>6000</td>
+            <td><a href="javascript:;">删除</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="#">
+        <div>
+          <label for="name">姓名</label>
+          <input type="text" id="name" />
+        </div>
+        <div>
+          <label for="email">邮件</label>
+          <input type="email" id="email" />
+        </div>
+        <div>
+          <label for="salary">薪资</label>
+          <input type="number" id="salary" />
+        </div>
+        <button>添加</button>
+      </form>
+    </div>
+    <script>
+      /*
+        点击删除超链接后，删除当前的员工数据
+      */
+      // 获取所有的超链接
+      // const del = document.getElementsByTagName("a");
+      // const link = document.links;
+      const del = document.querySelectorAll("[href='javascript:;']");
+
+      function delEmp() {
+        const delRes = this.parentNode.parentNode;
+        const empName = delRes.firstElementChild.textContent;
+        confirm(`确认要删除【${empName}】吗？`) ? delRes.remove() : false;
+      }
+      for (let i = 0; i < del.length; i++) {
+        // addEventListener() 无法通过return false阻止跳转
+        del[i].addEventListener("click", delEmp);
+
+        // function () {
+        //   const delRes = del[i].parentNode.parentNode;
+        //   const empName = delRes.firstElementChild.textContent; // 获取要删除的员工的姓名
+        //   // const empName = delRes
+        //   // .getElementByTagName("td")[0]
+        //   // 删除前弹出一个友好提示
+        //   confirm(`确认要删除【${empName}】吗？`) ? delRes.remove() : false;
+        //   // 本练习中的超链接是不希望发生跳转的，但是跳转是超链接的默认行为
+        //   // 事件中可以通过取消默认行为来阻止超链接的跳转
+        //   // 可以将href中的超链接写为 javascript:; 用来阻止超链接的跳转
+        // }
+
+        // // onclick方法可以通过return false阻止跳转
+        // del[i].onclick = function () {
+        //   del[i].parentNode.parentNode.remove();
+        //   return false;
+        //   // 使用 return false来取消默认行为，只在 xxx.xxx = function(){}这种形式绑定的事件中才适用
+        // };
+      }
+    </script>
+  </body>
+</html>
