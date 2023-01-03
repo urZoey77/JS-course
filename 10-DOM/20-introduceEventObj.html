@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件对象简介</title>
+    <style>
+      #box1 {
+        width: 300px;
+        height: 300px;
+        border: 10px pink solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1"></div>
+    <script>
+      /* 
+        event 事件
+          - 事件对象
+          - 事件对象是由浏览器在事件触发时所创建的对象，
+            这个对象中，封装了事件相关的各种信息
+          - 通过事件对象可以获取到事件的详细信息
+            比如：鼠标的坐标、键盘的按键
+          - 浏览器在创建事件对象后，会将事件对象作为响应函数的参数传递
+            所以我们可以在事件的回调函数中定义一个形参来接受事件对象
+      */
+
+      /* 
+        第一步：
+          了解什么是定位，相对定位和固定定位
+        第二步：
+          给一个盒子div使用定位
+        第三步：
+          再给用了定位的盒子设置 left 和 top 值，这两个值与鼠标的坐标有关
+      */
+
+      const box1 = document.getElementById("box1");
+      box1.addEventListener("mousemove", (event) => {
+        box1.textContent = event.clientX + "," + event.clientY;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>通过属性读取样式</title>
+    <style>
+      #box1 {
+        width: 200px;
+        height: 200px;
+        padding: 50px;
+        margin: 50px;
+        border: 10px pink solid;
+        background-color: cornflowerblue;
+        overflow: auto;
+      }
+
+      #box2 {
+        width: 100px;
+        height: 500px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">点我一下</button>
+    <hr />
+    <!-- style="position: relative" -->
+    <div>
+      <div id="box1">
+        <div id="box2"></div>
+      </div>
+    </div>
+
+    <script>
+      const btn = document.getElementById("btn");
+      const box1 = document.getElementById("box1");
+
+      btn.addEventListener("click", () => {
+        /* 
+        - 获取元素内部的宽度和高度（包括内容区和内边距）
+          ele.clientHeight
+          ele.clientWidth
+          返回的是可直接计算的数值（不带单位）
+        
+        - 获取元素的可见框的大小（包括内容区、内边距和边框）
+          ele.offsetHeight
+          ele.offsetWidth
+
+        - 获取元素滚动区域的大小
+          ele.scrollHeight
+          ele.scrollWidth
+
+        - 获取元素的定位父元素
+          ele.offsetParent
+          定位父元素：离当前元素最近的开启了定位的祖先元素
+          如果所有的元素都没有开启定位则返回 body
+
+        - 获取元素相对于其定位父元素的偏移量（获取距离offsetParent位置）
+          ele.offsetTop
+          ele.offsetLeft
+        
+        - 获取或设置元素滚动条的偏移量（可读可改）
+          ele.scrollTop
+          ele.scrollLeft
+        */
+        console.log(box1.clientHeight);
+        console.log(box1.scrollHeight);
+        console.log(box1.offsetParent);
+        console.log(box1.offsetLeft);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改css样式</title>
+    <style>
+      .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+      .box2 {
+        background-color: cadetblue;
+        width: 300px;
+        height: 500px;
+        border: 10px palegoldenrod solid;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">click</button>
+
+    <hr />
+
+    <div class="box1"></div>
+    <script>
+      /*
+        点击按钮后修改box1的宽度
+      */
+      const btn = document.getElementById("btn");
+      const box1 = document.querySelector(".box1");
+      btn.addEventListener("click", function () {
+        // 除了直接修改样式外，也可以通过修改class属性来间接的修改样式
+        /* 
+          通过class修改样式的好处：
+            1. 可以一次性修改多个央视
+            2. 对 JS 和 CSS 进行解耦
+        */
+        // box1.className += " box2";
+        // ele.classList 是一个对象，对象中提供了对当前元素的类的各种操作方法
+        /* 
+          ele.classList.add() 向元素中添加一个或多个class
+          ele.classList.remove() 移除元素中的一个或多个class
+          ele.classList.toggle() 切换元素中的一个class
+          ele.classList.replace() 替换class
+          ele.classList.contains() 检查class，有返回true 没有返回false
+        */
+
+        // box1.classList.add("box2","box3","box4");
+        // box1.classList.remove("box2");
+        // box1.classList.toggle("box2");
+        // box1.classList.replace("box1", "box2");
+        let res = box1.classList.contains("box2");
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>
