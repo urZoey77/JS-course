@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件的冒泡</title>
+    <style>
+      #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      #box2 {
+        width: 50px;
+        height: 50px;
+        background-color: lightblue;
+        position: absolute;
+        bottom: 50%;
+      }
+
+      #box3 {
+        width: 150px;
+        height: 150px;
+        background-color: burlywood;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1"></div>
+
+    <div id="box2"></div>
+
+    <div id="box3"></div>
+    <script>
+      /*
+        球跟随鼠标的移动
+          - 事件的冒泡和元素的样式无关，只和结构相关
+      */
+      const box1 = document.getElementById("box1");
+      const eleArr = document.getElementsByTagName("div");
+      console.log(eleArr);
+      let isMoving = true;
+
+      function moving(event) {
+        box1.style.left = event.clientX - 50 + "px";
+        box1.style.top = event.clientY - 50 + "px";
+        // box1.textContent = event.clientX + "," + event.clientY;
+      }
+
+      // document.addEventListener("mousemove", moving);
+
+      // document.addEventListener("click", (event) => {
+      //   if (isMoving) {
+      //     document.removeEventListener("mousemove", moving);
+      //   } else {
+      //     document.addEventListener("mousemove", moving);
+      //   }
+      //   isMoving = !isMoving;
+      // });
+
+      document.addEventListener("mousedown", (event) => {
+        document.addEventListener("mousemove", moving);
+        // if (isMoving) {
+        //   document.removeEventListener("mousemove", moving);
+        // } else {
+        //   document.addEventListener("mousemove", moving);
+        // }
+        // isMoving = !isMoving;
+      });
+
+      document.addEventListener("mouseup", (event) => {
+        document.removeEventListener("mousemove", moving);
+        box1.style.left = event.clientX - 50 + "px";
+        box1.style.top = event.clientY - 50 + "px";
+      });
+    </script>
+  </body>
+</html>
