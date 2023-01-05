@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件的冒泡</title>
+    <style>
+      #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      #box2 {
+        width: 50px;
+        height: 50px;
+        background-color: lightblue;
+        position: absolute;
+      }
+
+      #box3 {
+        width: 150px;
+        height: 150px;
+        background-color: burlywood;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1" class="movable"></div>
+
+    <div id="box2" class="movable"></div>
+
+    <div id="box3" class="movable"></div>
+
+    <script>
+      document.addEventListener("mousedown", (event) => {
+        // 只允许元素类中包含 movable 的元素被拖动
+        if (!event.target.classList.contains("movable")) return;
+
+        // ES6 的对象解构语法，可以去了解一下，现在实际开发都是这么用的
+        // offsetX: 鼠标相对于元素的左边缘的距离, offsetY: 鼠标相对于元素的上边缘的距离
+        const { target: box, offsetX, offsetY } = event;
+
+        // 设置定位，防止元素本身没有设置定位
+        // absolute 和 fixed 都可以，但是还是有区别的，例如 fixed 相对于的是浏览器可视区域，而 absolute 相对于的是父元素
+        box.style.position = "fixed";
+
+        function onMouseMove(mouseEvent) {
+          box.style.left = mouseEvent.x - offsetX + "px";
+          box.style.top = mouseEvent.y - offsetY + "px";
+        }
+
+        function onMouseUp() {
+          // 一定要保证在鼠标释放时移除事件监听，否则会造成重复绑定过多的事件监听
+          document.removeEventListener("mousemove", onMouseMove);
+          document.removeEventListener("mouseup", onMouseUp);
+        }
+
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+      });
+    </script>
+  </body>
+</html>

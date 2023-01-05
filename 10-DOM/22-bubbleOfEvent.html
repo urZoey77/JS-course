@@ -39,47 +39,58 @@
 
     <div id="box3"></div>
     <script>
-      /*
-        球跟随鼠标的移动
-          - 事件的冒泡和元素的样式无关，只和结构相关
-      */
-      const box1 = document.getElementById("box1");
-      const eleArr = document.getElementsByTagName("div");
-      console.log(eleArr);
-      let isMoving = true;
+      document.addEventListener("mouseover", (event) => {
+        // let mouse_currentX = event.clientX;
+        // let mouse_currentY = event.clientY;
+        let currentEle = document.elementFromPoint(
+          event.clientX,
+          event.clientY
+        );
+        // console.log(currentEle);
+        // return;
+        function moving(event) {
+          event.stopPropagation();
+          currentEle.style.left = event.clientX - 50 + "px";
+          currentEle.style.top = event.clientY - 50 + "px";
+        }
+        document.addEventListener("mousedown", (event) => {
+          document.addEventListener("mousemove", moving);
+          console.log(currentEle);
+        });
 
-      function moving(event) {
-        box1.style.left = event.clientX - 50 + "px";
-        box1.style.top = event.clientY - 50 + "px";
-        // box1.textContent = event.clientX + "," + event.clientY;
-      }
+        document.addEventListener("mouseup", (event) => {
+          document.removeEventListener("mousemove", moving);
+          currentEle = document.elementFromPoint(event.clientX, event.clientY);
+        });
+      });
 
-      // document.addEventListener("mousemove", moving);
+      // function moving(event) {
+      //   get_curEle(event);
+      //   console.log(curEle);
+      //   curEle.style.left = event.clientX + "px";
+      //   curEle.style.top = event.clientY + "px";
+      // }
 
-      // document.addEventListener("click", (event) => {
-      //   if (isMoving) {
-      //     document.removeEventListener("mousemove", moving);
-      //   } else {
-      //     document.addEventListener("mousemove", moving);
-      //   }
-      //   isMoving = !isMoving;
+      // function get_curEle(event) {
+      //   let curEle = document.elementFromPoint(event.clientX, event.clientY);
+      //   return curEle;
+      // }
+
+      // document.addEventListener("mousedown", (event) => {
+      //   get_curEle(event);
+      //   // let curEle = document.elementFromPoint(event.clientX, event.clientY);
+      //   // function moving(event) {
+      //   //   curEle.style.left = event.clientX + "px";
+      //   //   curEle.style.top = event.clientY + "px";
+      //   // }
+      //   document.addEventListener("mousemove", moving);
       // });
 
-      document.addEventListener("mousedown", (event) => {
-        document.addEventListener("mousemove", moving);
-        // if (isMoving) {
-        //   document.removeEventListener("mousemove", moving);
-        // } else {
-        //   document.addEventListener("mousemove", moving);
-        // }
-        // isMoving = !isMoving;
-      });
-
-      document.addEventListener("mouseup", (event) => {
-        document.removeEventListener("mousemove", moving);
-        box1.style.left = event.clientX - 50 + "px";
-        box1.style.top = event.clientY - 50 + "px";
-      });
+      // document.addEventListener("mouseup", (event) => {
+      //   document.removeEventListener("mousemove", moving);
+      //   curEle.style.left = event.clientX + "px";
+      //   curEle.style.top = event.clientY + "px";
+      // });
     </script>
   </body>
 </html>
