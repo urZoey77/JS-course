@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>History</title>
+  </head>
+  <body>
+    <button id="btn">click</button>
+    <script>
+      /* 
+        history
+          - history.back()
+            - 回退按钮
+          - history.forward()
+            - 前进按钮
+          - history.go()
+            - 可以向前跳转也可以向后跳转
+      */
+      const btn = document.getElementById("btn");
+      btn.addEventListener("click", (event) => {
+        console.log(history);
+      });
+    </script>
+  </body>
+</html>
