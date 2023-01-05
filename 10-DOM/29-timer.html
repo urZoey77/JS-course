@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定时器</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        通过定时器，可以使代码在指定时间后执行
+          - 设置定时器的方式有两种
+            setTimeout()
+              - 参数：
+                  1. 回调函数（要执行的代码）
+                  2. 间隔的时间（毫秒）
+              - 关闭定时器
+                  clearTimeOut()
+            setInterval()
+              - 每间隔一段时间，代码就会执行一次
+              - 参数：
+                  1. 回调函数（要执行的代码）
+                  2. 间隔的时间（毫秒）
+              - 关闭定时器
+                  clearInterval()
+      */
+      // const timer = setTimeout(() => {
+      //   alert("im code in timeout");
+      // }, 5000);
+      // clearTimeout(timer);
+
+      const timer = setInterval(() => {
+        console.log("hhaa");
+      }, 3000);
+
+      clearInterval(timer);
+    </script>
+  </body>
+</html>
