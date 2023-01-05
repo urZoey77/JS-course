@@ -8,6 +8,50 @@
     <style></style>
   </head>
   <body>
-    <script></script>
+    <button id="btn">click</button>
+    <ul id="list">
+      <li><a href="javascript:;">Link1</a></li>
+      <li><a href="javascript:;">Link2</a></li>
+      <li><a href="javascript:;">Link3</a></li>
+      <li><a href="javascript:;">Link4</a></li>
+      <li><a href="javascript:;">Link5</a></li>
+    </ul>
+    <script>
+      /*
+        希望：
+          1. 只绑定一次事件，就可以让所有的超链接
+              包括当前的和未来新建的超链接都具有这些事件
+
+        思路：
+          可以将事件统一绑定给document，这样点击超链接时，由于事件的冒泡，
+            会导致document上的点击事件被触发，这样只绑定一次
+            所有的超链接都会具有这些事件
+        
+        委派：
+          就是将本该绑定给多个元素的事件，统一绑定给document
+          这样可以降低代码的复杂度，方便维护
+      */
+
+      const list = document.getElementById("list");
+      const btn = document.getElementById("btn");
+      // 获取 list 中的所有超链接
+      const links = list.getElementsByTagName("a");
+
+      list.addEventListener("click", (event) => {
+        // 在执行代码前，先判断一下事件是由谁触发
+        // 检查 event.target 是否在 links 中存在
+        if ([...links].includes(event.target)) {
+          alert(event.target.textContent);
+        }
+      });
+
+      // 点击按钮后，在 ul 中添加一个新的 li
+      btn.addEventListener("click", (event) => {
+        list.insertAdjacentHTML(
+          "beforeend",
+          '<li><a href="javascript:;">NewLink</a></li>'
+        );
+      });
+    </script>
   </body>
 </html>

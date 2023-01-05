@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件的冒泡</title>
+    <style>
+      #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      #box2 {
+        width: 50px;
+        height: 50px;
+        background-color: lightblue;
+        position: absolute;
+        bottom: 50%;
+      }
+
+      #box3 {
+        width: 150px;
+        height: 150px;
+        background-color: burlywood;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1"></div>
+
+    <div id="box2"></div>
+
+    <div id="box3"></div>
+    <script>
+      document.addEventListener("mouseover", (event) => {
+        // let mouse_currentX = event.clientX;
+        // let mouse_currentY = event.clientY;
+        let currentEle = document.elementFromPoint(
+          event.clientX,
+          event.clientY
+        );
+        // console.log(currentEle);
+        // return;
+        function moving(event) {
+          event.stopPropagation();
+          currentEle.style.left = event.clientX - 50 + "px";
+          currentEle.style.top = event.clientY - 50 + "px";
+        }
+        document.addEventListener("mousedown", (event) => {
+          document.addEventListener("mousemove", moving);
+          console.log(currentEle);
+        });
+
+        document.addEventListener("mouseup", (event) => {
+          document.removeEventListener("mousemove", moving);
+          currentEle = document.elementFromPoint(event.clientX, event.clientY);
+        });
+      });
+
+      // function moving(event) {
+      //   get_curEle(event);
+      //   console.log(curEle);
+      //   curEle.style.left = event.clientX + "px";
+      //   curEle.style.top = event.clientY + "px";
+      // }
+
+      // function get_curEle(event) {
+      //   let curEle = document.elementFromPoint(event.clientX, event.clientY);
+      //   return curEle;
+      // }
+
+      // document.addEventListener("mousedown", (event) => {
+      //   get_curEle(event);
+      //   // let curEle = document.elementFromPoint(event.clientX, event.clientY);
+      //   // function moving(event) {
+      //   //   curEle.style.left = event.clientX + "px";
+      //   //   curEle.style.top = event.clientY + "px";
+      //   // }
+      //   document.addEventListener("mousemove", moving);
+      // });
+
+      // document.addEventListener("mouseup", (event) => {
+      //   document.removeEventListener("mousemove", moving);
+      //   curEle.style.left = event.clientX + "px";
+      //   curEle.style.top = event.clientY + "px";
+      // });
+    </script>
+  </body>
+</html>
