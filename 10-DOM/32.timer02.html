@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定时器</title>
+  </head>
+  <body>
+    <div id="box1"></div>
+    <script>
+      /*
+        定时器的本质，就是在指定时间后将函数添加到消息队列中
+      */
+      // console.time();
+      // setTimeout(() => {
+      //   console.timeEnd();
+      //   console.log("timer is working");
+      // }, 3000);
+
+      // 使程序卡6秒
+      // const begin = Date.now();
+      // while (Date.now() - begin < 6000);
+
+      // setInterval(() => {
+      //   console.log("timer is working");
+      // }, 3000);
+      const box1 = document.getElementById("box1");
+      setInterval(() => {
+        box1.textContent = new Date().toLocaleString("zh-CN", {
+          dateStyle: "short",
+          timeStyle: "medium",
+        });
+        // .toLocaleString("zh-CN", {
+        // timestyle: "short",
+        // });
+      });
+    </script>
+  </body>
+</html>
