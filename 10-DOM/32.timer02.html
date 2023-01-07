@@ -22,19 +22,47 @@
       // const begin = Date.now();
       // while (Date.now() - begin < 6000);
 
+      /* 
+        setInterval() 是每间隔一段时间就将函数添加到消息队列中
+          但是如果函数执行的速度比比较慢，它是无法确保每次执行的间隔都是一样的
+      */
+      // console.time("间隔");
       // setInterval(() => {
-      //   console.log("timer is working");
+      //   console.timeEnd("间隔");
+      //   // console.log("timer is working");
+      //   alert("timer is working");
+      //   console.time("间隔");
       // }, 3000);
-      const box1 = document.getElementById("box1");
-      setInterval(() => {
-        box1.textContent = new Date().toLocaleString("zh-CN", {
-          dateStyle: "short",
-          timeStyle: "medium",
-        });
-        // .toLocaleString("zh-CN", {
-        // timestyle: "short",
-        // });
-      });
+
+      /* 
+        希望可以确保函数每次执行都有相同的间隔
+      */
+      // console.time();
+      // setTimeout(function fn() {
+      //   console.timeEnd();
+      //   console.log("timeout is working~");
+      //   // 在setTimeout的回调函数的最后，再调用一个setTimeout
+      //   console.time();
+      //   setTimeout(fn, 3000);
+      // });
+
+      setTimeout(() => {
+        console.log(1111);
+      }, 0);
+
+      console.log(22222);
+
+      // practice from Babe
+      // const box1 = document.getElementById("box1");
+      // setInterval(() => {
+      //   box1.textContent = new Date().toLocaleString("zh-CN", {
+      //     dateStyle: "short",
+      //     timeStyle: "medium",
+      //   });
+      // .toLocaleString("zh-CN", {
+      // timestyle: "short",
+      // });
+      // });
     </script>
   </body>
 </html>

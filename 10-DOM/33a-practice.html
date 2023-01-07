@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script id="scr1">
+      let index = 1;
+      const scr = document.getElementById("scr1");
+      function crEle() {
+        const div = document.createElement("div");
+        div.innerHTML = `${index} : A word `;
+        scr.insertAdjacentElement("beforebegin", div);
+        index++;
+      }
+      // console.time();
+      // setTimeout(function pr() {
+      //   console.timeEnd();
+      //   crEle();
+      //   console.time();
+      //   setTimeout(pr, 1000);
+      // }, 1000);
+
+      const timer = setInterval(function pr() {
+        crEle();
+        clearInterval(timer);
+      }, 3000);
+    </script>
+  </body>
+</html>
