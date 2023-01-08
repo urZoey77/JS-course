@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 450px;
+        margin: 50px auto;
+        text-align: center;
+        position: relative;
+      }
+      .demo {
+        height: 337.5px;
+      }
+
+      .prev-next a {
+        font-size: 60px;
+        color: pink;
+        font-weight: bold;
+        text-decoration: none;
+        height: 60px;
+        margin: auto;
+
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        bottom: 0;
+      }
+
+      #prev {
+        left: 0;
+      }
+
+      #next {
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="img-wrapper">
+        <img id="img1" class="demo" alt="null" />
+      </div>
+      <!-- <div class="btn-wrapper">
+        <button id="btnLeft">Previous page</button>
+        <button id="btnRight">Next page</button>
+      </div> -->
+
+      <!-- 添加切换按钮 -->
+
+      <div class="prev-next">
+        <a id="prev" href="javascript:;"> ← </a>
+
+        <a id="next" href="javascript:;"> → </a>
+      </div>
+    </div>
+
+    <script>
+      const img = document.getElementById("img1");
+      let index = 1;
+      const maxSize = 5;
+      img.src = `./images/${index}.jpg`;
+
+      // // 首先实现按按钮切换图片
+      // const btnLeft = document.getElementById("btnLeft");
+      // const btnRight = document.getElementById("btnRight");
+
+      // btnLeft.addEventListener("click", () => {
+      //   clearTimeout(timer);
+      //   index = index === 1 ? maxSize : index - 1;
+      //   img.src = `./images/${index}.jpg`;
+      //   setTimeout(changeImg, 3000);
+      // });
+
+      // btnRight.addEventListener("click", () => {
+      //   clearTimeout(timer);
+      //   index = index === maxSize ? 1 : index + 1;
+      //   img.src = `./images/${index}.jpg`;
+      //   setTimeout(changeImg, 3000);
+      // });
+
+      // // 每3秒自动切换一张图片
+      // // setTimeout(changeImg(){
+      // //   index = index === maxSize ? 1 : index + 1;
+      // //   img.src = `./images/${index}.jpg`;
+      // // }, 3000);
+      // function changeImg() {
+      //   index = index === maxSize ? 1 : index + 1;
+      //   img.src = `./images/${index}.jpg`;
+      //   setTimeout(changeImg, 3000);
+      // }
+
+      // const timer = setTimeout(changeImg, 3000);
+    </script>
+  </body>
+</html>

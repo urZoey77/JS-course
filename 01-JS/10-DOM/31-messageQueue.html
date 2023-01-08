@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>消息队列</title>
+  </head>
+  <body>
+    <button id="btn">click</button>
+    <script>
+      /*
+        事件循环（event loop）
+          - 函数在每次执行时，都会产生一个执行环境
+          - 执行环境负责存储函数执行时产生的一切数据
+          - 问题：函数的执行环境要存储到哪里呢？
+              - 函数的执行环境存储到了一个叫做调用栈的地方
+          - 栈，是一种数据结构，特点：后进先出
+          - 队列，是一种数据结构，特点：先进先出
+          - 调用栈（call stack）
+              - 调用栈负责存储函数的执行环境
+              - 当一个函数被调用时，它的执行环境会作为一个栈帧
+                插入到调用栈的栈顶，函数执行完毕其栈帧会自动从栈中弹出
+          - 消息队列
+              - 消息队列负责存储将要执行的函数
+              - 当我们触发一个事件时，其响应函数并不是直接就添加到调用栈中的
+                因为调用栈中有可能会存在一些还没有执行完的代码
+              - 事件出发后，JS引擎是将事件响应函数插入到消息队列中排队
+
+      */
+      function fn() {
+        let a = 10;
+        let b = 20;
+        function fn2() {}
+        fn2();
+        console.log("fn~");
+      }
+      fn();
+
+      const btn = document.getElementById("btn");
+      btn.addEventListener("click", () => {
+        console.log("btn was clicked.");
+      });
+    </script>
+  </body>
+</html>
