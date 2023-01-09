@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      img {
+        vertical-align: top;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .outer {
+        width: 450px;
+        height: 337.5px;
+        margin: 100px auto;
+        position: relative;
+      }
+
+      .demo {
+        height: 337.5px;
+      }
+
+      .img-list {
+        height: 337.5px;
+      }
+
+      .img-list li {
+        position: absolute;
+        opacity: 0;
+        transition: opacity 1s;
+      }
+
+      li.current {
+        z-index: 1;
+        opacity: 1;
+      }
+
+      .prev-next a {
+        font-size: 60px;
+        color: pink;
+        font-weight: bold;
+        text-decoration: none;
+        position: absolute;
+        height: 60px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 2;
+        opacity: 0.5;
+      }
+
+      .prev-next a:hover {
+        opacity: 1;
+      }
+
+      #next {
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <ul class="img-list">
+        <li>
+          <a href="#">
+            <img src="./images/1.JPG" class="demo" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./images/2.JPG" class="demo" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./images/3.JPG" class="demo" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./images/4.JPG" class="demo" />
+          </a>
+        </li>
+      </ul>
+      <div id="info">6</div>
+      <!-- 添加切换按钮 -->
+      <div class="prev-next">
+        <a id="prev" href="javascript:;"><</a>
+        <a id="next" href="javascript:;">></a>
+      </div>
+    </div>
+
+    <script>
+      /*
+        图片可以自动切换
+        给每个li轮流设置current
+      */
+      const liArr = document.getElementsByTagName("li");
+      let index = 0;
+
+      const info = document.getElementById("info");
+      function update() {
+        info.innerText = `${index + 1}/${liArr.length}`;
+        liArr[index].classList.add("current");
+      }
+      update();
+
+      function nextChangeImg() {
+        liArr[index].classList.remove("current");
+        // index = index === liArr.length - 1 ? 0 : index + 1;
+        index = (index + 1) % liArr.length;
+        update();
+      }
+
+      function prevChangeImg() {
+        liArr[index].classList.remove("current");
+        let temp = (index - 1) % liArr.length;
+        index = (temp + liArr.length) % liArr.length;
+        update();
+      }
+
+      setInterval(nextChangeImg, 5000);
+
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+      next.addEventListener("click", nextChangeImg);
+      prev.addEventListener("click", prevChangeImg);
+    </script>
+  </body>
+</html>
