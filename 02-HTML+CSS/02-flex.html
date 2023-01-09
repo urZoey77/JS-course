@@ -61,10 +61,57 @@
             · center 在主轴居中对齐（如果主轴是 X轴，则水平居中）
             · space-around 平分剩余空间
             · space-between 先两边贴边，再平分剩余空间（重要）
+          
           flex-wrap 设置子元素是否换行
+            默认情况下，项目都排在一条线上（又称“轴线”）上
+            flex-wrap属性定义，flex布局中默认是不换行的
+            如果放不下，会缩小子元素的宽度，放到父元素里面
+              · nowrap 默认值，不换行
+              · wrap 换行
+          
           align-content 设置侧轴上的子元素排列方式（多行）
+            控制子项在侧轴上的排列方式，且只能用于子项出现 换行的情况（多行）
+            在单行下是没有效果的
+              · flex-start 默认值，在侧轴的头部开始排列
+              · flex-end 在侧轴的尾部开始排列
+              · center 在侧轴中间显示
+              · space-around 子轴在侧轴平分剩余空间
+              · space-between 子轴在侧轴先分布在两头，再平分剩余空间
+              · stretch 设置子项元素高度平分父元素高度         
+          
           align-items 设置侧轴上的子元素排列方式（单行）
+            控制子项在侧轴上的排列方式，在子项为单项（单行）的时候使用
+            align-items：
+              · flex-start 从上到下
+              · flex-end 从下到上
+              · center 挤在一起居中（垂直居中）
+              · stretch 拉伸（默认值）
+          
+          align-content 和 align-items 区别
+            - align-items 适用于单行情况下，只有上对齐、下对齐、居中和拉伸
+            - align-content 适用于换行（多行）情况下（单行情况无效）
+              可以设置 上对齐，下对齐，居中，拉伸以及平均分配剩余空间等属性值
+            - 总结就是单行找align-items ，多行找align-content
+          
           flex-flow 复合属性，相当于同时设置了 flex-direction 和 flex-wrap
+      */
+
+      /* 
+        flex布局子项常见属性
+          flex 子项目占的份数
+            定义子项目分配剩余空间，用flex来表示占多少份数
+              .item{
+                flex:<number>; 
+              }
+          align-self 控制子项自己在侧轴的排序方式
+            允许单个项目与其他项目有不一样的对齐方式，可以覆盖 align-items属性
+            默认值为 auto 表示继承父元素的 align-items属性
+            如果没有父元素，则等同于 stretch
+
+          order属性定义子项的排列顺序（前后顺序）
+            数值越小，排列越靠前，默认为 0
+            注意：和 z-index 不一样
+        
       */
     </script>
   </body>
