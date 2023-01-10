@@ -66,32 +66,65 @@
       #next {
         right: 0;
       }
+
+      .dot {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        z-index: 3;
+        left: 0;
+        right: 0;
+        bottom: 10px;
+        margin: auto;
+      }
+      .dot a {
+        width: 12px;
+        height: 12px;
+        margin: 5px;
+        border-radius: 50%;
+        background-color: #fff;
+        opacity: 0.5;
+      }
+
+      .dot a:hover,
+      .dot .active {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
     <div class="outer">
-      <ul class="img-list">
+      <ul class="img-list" id="imgList">
         <li>
-          <a href="#">
+          <a href="javascript:;">
             <img src="./images/1.JPG" class="demo" />
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="javascript:;">
             <img src="./images/2.JPG" class="demo" />
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="javascript:;">
             <img src="./images/3.JPG" class="demo" />
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="javascript:;">
             <img src="./images/4.JPG" class="demo" />
           </a>
         </li>
       </ul>
+
+      <!-- 添加导航点 -->
+      <div class="dot">
+        <a class="active" href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+      </div>
+
       <div id="info">6</div>
       <!-- 添加切换按钮 -->
       <div class="prev-next">
@@ -99,59 +132,76 @@
         <a id="next" href="javascript:;">></a>
       </div>
     </div>
-
     <script>
-      /*
-        图片可以自动切换
-        给每个li轮流设置current
-      */
       const liArr = document.getElementsByTagName("li");
+      const dotArr = document.querySelectorAll(".dot a");
       let index = 0;
-
       const info = document.getElementById("info");
+
+      // 用来修改图片张数提示、当前展现的图片及导航点
       function update() {
         info.innerText = `${index + 1}/${liArr.length}`;
         liArr[index].classList.add("current");
+        dotArr[index].classList.add("active");
       }
       update();
 
-      function changeImg(dir = "next") {
+      // 用于切换图片
+      function changeImg(isNext = true) {
         liArr[index].classList.remove("current");
-        if (dir === prev) {
+        dotArr[index].classList.remove("active");
+        if (isNext) {
+          index = (index + 1) % liArr.length;
+        } else {
           let temp = (index - 1) % liArr.length;
           index = (temp + liArr.length) % liArr.length;
-        } else {
-          index = (index + 1) % liArr.length;
         }
         update();
       }
 
-      function nextChangeImg() {
-        liArr[index].classList.remove("current");
-        // index = index === liArr.length - 1 ? 0 : index + 1;
-        index = (index + 1) % liArr.length;
-        update();
-      }
-
-      function prevChangeImg() {
-        liArr[index].classList.remove("current");
-        let temp = (index - 1) % liArr.length;
-        index = (temp + liArr.length) % liArr.length;
-        update();
-      }
-
-      setInterval(() => {
-        changeImg();
-      }, 2000);
+      // 自动切换图片，闭包使外部无法访问 timer
+      const auto = (function () {
+        let timer = null;
+        return () => {
+          if (timer === null) {
+            timer = setInterval(() => {
+              changeImg(true);
+            }, 2000);
+          } else {
+            clearInterval(timer);
+            timer = null;
+          }
+        };
+      })();
+      auto();
 
       const prev = document.getElementById("prev");
       const next = document.getElementById("next");
+      const outer = document.getElementsByClassName("outer")[0];
 
+      // 给切换按钮增加事件
       next.addEventListener("click", () => {
-        changeImg();
+        changeImg(true);
       });
       prev.addEventListener("click", () => {
-        changeImg("prev");
+        changeImg(false);
+      });
+
+      // 鼠标悬停时停止自动切换图片
+      outer.addEventListener("mouseenter", auto);
+
+      outer.addEventListener("mouseleave", auto);
+
+      // 当点击小圆点时，展示对应的图片及切换导航点状态
+      outer.addEventListener("click", function fn(event) {
+        const curIndex = [...dotArr].indexOf(event.target);
+        if (curIndex != -1) {
+          // 切换图片及active
+          liArr[index].classList.remove("current");
+          dotArr[index].classList.remove("active");
+          index = curIndex;
+          update();
+        }
       });
     </script>
   </body>

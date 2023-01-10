@@ -70,24 +70,24 @@
   </head>
   <body>
     <div class="outer">
-      <ul class="img-list">
+      <ul class="img-list" id="imgList">
         <li>
-          <a href="#">
+          <a href="javascript:;">
             <img src="./images/1.JPG" class="demo" />
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="javascript:;">
             <img src="./images/2.JPG" class="demo" />
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="javascript:;">
             <img src="./images/3.JPG" class="demo" />
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="javascript:;">
             <img src="./images/4.JPG" class="demo" />
           </a>
         </li>
@@ -99,12 +99,7 @@
         <a id="next" href="javascript:;">></a>
       </div>
     </div>
-
     <script>
-      /*
-        图片可以自动切换
-        给每个li轮流设置current
-      */
       const liArr = document.getElementsByTagName("li");
       let index = 0;
 
@@ -115,43 +110,51 @@
       }
       update();
 
-      function changeImg(dir = "next") {
+      function changeImg(isNext = true) {
         liArr[index].classList.remove("current");
-        if (dir === prev) {
+        if (isNext) {
+          index = (index + 1) % liArr.length;
+        } else {
           let temp = (index - 1) % liArr.length;
           index = (temp + liArr.length) % liArr.length;
-        } else {
-          index = (index + 1) % liArr.length;
         }
         update();
       }
 
-      function nextChangeImg() {
-        liArr[index].classList.remove("current");
-        // index = index === liArr.length - 1 ? 0 : index + 1;
-        index = (index + 1) % liArr.length;
-        update();
-      }
-
-      function prevChangeImg() {
-        liArr[index].classList.remove("current");
-        let temp = (index - 1) % liArr.length;
-        index = (temp + liArr.length) % liArr.length;
-        update();
-      }
-
-      setInterval(() => {
-        changeImg();
-      }, 2000);
+      const auto = (function () {
+        let timer = null;
+        return () => {
+          if (timer === null) {
+            timer = setInterval(() => {
+              changeImg(true);
+            }, 2000);
+          } else {
+            clearInterval(timer);
+            timer = null;
+          }
+        };
+      })();
+      auto();
 
       const prev = document.getElementById("prev");
       const next = document.getElementById("next");
+      const imgList = document.getElementById("imgList");
 
       next.addEventListener("click", () => {
-        changeImg();
+        changeImg(true);
       });
       prev.addEventListener("click", () => {
-        changeImg("prev");
+        changeImg(false);
+      });
+
+      imgList.addEventListener("mouseenter", () => {
+        auto();
+        console.log("mouseenter~");
+      });
+
+      imgList.addEventListener("mouseleave", () => {
+        auto();
+        console.log("mouseleave~");
       });
     </script>
   </body>
