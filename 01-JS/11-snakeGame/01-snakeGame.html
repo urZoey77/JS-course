@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>贪吃蛇</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #outer {
+        width: 360px;
+        height: 420px;
+        padding: 16px;
+        border: 10px solid black;
+        border-radius: 5%;
+        background-color: #b7d4a8;
+        margin: auto;
+        margin-top: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      #inside {
+        width: 304px;
+        height: 304px;
+        border: 2px solid black;
+        position: relative;
+        /* margin-left: 28px; */
+        /* margin-top: 15px; */
+      }
+
+      #foodBox {
+        width: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        position: absolute;
+        top: 100px;
+        left: 60px;
+      }
+
+      .food {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: #000;
+      }
+
+      #snake {
+        width: 10px;
+        position: absolute;
+        top: 180px;
+        left: 200px;
+      }
+
+      .snakeBody {
+        width: 10px;
+        height: 10px;
+        background-color: #000;
+      }
+
+      #gameInfo {
+        display: flex;
+        justify-content: space-between;
+        font-family: "Courier New", Courier, monospace;
+        font-weight: bold;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 需要一个容器作为游戏的主窗口 -->
+    <div id="outer">
+      <div id="inside">
+        <div id="foodBox">
+          <div class="food"></div>
+          <div class="food"></div>
+          <div class="food"></div>
+          <div class="food"></div>
+        </div>
+        <div id="snake">
+          <div class="snakeBody"></div>
+        </div>
+      </div>
+      <div id="gameInfo">
+        <div>SCORE:<span id="score">0</span></div>
+        <div>LEVEL:<span id="level">1</span></div>
+      </div>
+    </div>
+    <script>
+      /*
+        用键盘控制蛇的移动
+        默认向右移动
+        按下方向键时，蛇往该方向每次移动10px
+      */
+      const snake = document.getElementById("snake");
+
+      let timer = null;
+      document.addEventListener("keydown", (event) => {
+        clearInterval(timer);
+        if (event.key === "ArrowLeft") {
+          timer = setInterval(() => {
+            snake.style.left = snake.offsetLeft - 10 + "px";
+          }, 1000);
+        } else if (event.key === "ArrowRight") {
+          timer = setInterval(() => {
+            snake.style.left = snake.offsetLeft + 10 + "px";
+          }, 1000);
+        } else if (event.key === "ArrowUp") {
+          timer = setInterval(() => {
+            snake.style.top = snake.offsetTop - 10 + "px";
+          }, 1000);
+        } else if (event.key === "ArrowDown") {
+          timer = setInterval(() => {
+            snake.style.top = snake.offsetTop + 10 + "px";
+          }, 300);
+        }
+      });
+    </script>
+  </body>
+</html>
