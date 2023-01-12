@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>贪吃蛇</title>
+    <title>贪吃蛇的移动</title>
     <style>
       * {
         margin: 0;
@@ -96,27 +96,68 @@
     </div>
     <script>
       /*
-        用键盘控制蛇的移动
-        默认向右移动
-        按下方向键时，蛇往该方向每次移动10px
+        *** 键盘事件只能绑定给可以获取焦点的元素或者是document
+        思路：
+          1. 用键盘控制蛇的移动
+          2. 默认向右移动
+          3. 按下方向键时，蛇往该方向每次移动10px
+      */
+      /* 
+        当我们按着某个按键不松开时，按键按下时间会持续触发
+          但是第一次和第二次触发的间隔会比较长
+          这样导致练习中蛇不能流畅的移动
+        贪吃蛇类的游戏，蛇是不能停的
       */
       const snake = document.getElementById("snake");
 
       let timer = null;
+      /* 
       document.addEventListener("keydown", (event) => {
         clearInterval(timer);
         timer = setInterval(() => {
-          if (event.key === "ArrowLeft") {
-            snake.style.left = snake.offsetLeft - 10 + "px";
-          } else if (event.key === "ArrowRight") {
-            snake.style.left = snake.offsetLeft + 10 + "px";
-          } else if (event.key === "ArrowUp") {
-            snake.style.top = snake.offsetTop - 10 + "px";
-          } else if (event.key === "ArrowDown") {
-            snake.style.top = snake.offsetTop + 10 + "px";
-          }
-        }, 500);
+          switch (event.key) {
+            case "ArrowLeft":
+              snake.style.left = snake.offsetLeft - 10 + "px";
+              break;
+            case "ArrowRight":
+              snake.style.left = snake.offsetLeft + 10 + "px";
+              break;
+            case "ArrowUp":
+              snake.style.top = snake.offsetTop - 10 + "px";
+              break;
+            case "ArrowDown":
+              snake.style.top = snake.offsetTop + 10 + "px";
+              break;
+              }
+            }, 500);
+          });
+          keydown事件控制方向没有问题，但是控制移动速度会有问题
+          所以要把速度和方向分开来
+      */
+      let dir;
+      const keyArr = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
+      document.addEventListener("keydown", (event) => {
+        // 只有当按键为方向键时，才改变方向
+        if (keyArr.includes(event.key)) {
+          dir = event.key;
+        }
       });
+      timer = setInterval(function moving() {
+        switch (dir) {
+          case "ArrowLeft":
+            snake.style.left = snake.offsetLeft - 10 + "px";
+            break;
+          case "ArrowRight":
+            snake.style.left = snake.offsetLeft + 10 + "px";
+            break;
+          case "ArrowUp":
+            snake.style.top = snake.offsetTop - 10 + "px";
+            break;
+          case "ArrowDown":
+            snake.style.top = snake.offsetTop + 10 + "px";
+            break;
+        }
+      }, 500);
     </script>
   </body>
 </html>

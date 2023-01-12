@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>贪吃蛇与食物的碰撞检测</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #outer {
+        width: 360px;
+        height: 420px;
+        padding: 16px;
+        border: 10px solid black;
+        border-radius: 5%;
+        background-color: #b7d4a8;
+        margin: auto;
+        margin-top: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      #inside {
+        width: 304px;
+        height: 304px;
+        border: 2px solid black;
+        position: relative;
+        /* margin-left: 28px; */
+        /* margin-top: 15px; */
+      }
+
+      #food {
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        display: flex;
+        top: 120px;
+        left: 80px;
+        flex-flow: wrap;
+      }
+
+      #food > div {
+        width: 5px;
+        height: 5px;
+        transform: rotate(45deg);
+        /* border-radius: 50%; */
+        background-color: #000;
+      }
+
+      #snake > div {
+        width: 10px;
+        height: 10px;
+        background-color: #000;
+        position: absolute;
+        top: 130px;
+        left: 60px;
+      }
+
+      #gameInfo {
+        display: flex;
+        justify-content: space-between;
+        font-family: "Courier New", Courier, monospace;
+        font-weight: bold;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 需要一个容器作为游戏的主窗口 -->
+    <div id="outer">
+      <div id="inside">
+        <div id="food">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div id="snake">
+          <div></div>
+        </div>
+      </div>
+      <div id="gameInfo">
+        <div>SCORE:<span id="score">0</span></div>
+        <div>LEVEL:<span id="level">1</span></div>
+      </div>
+    </div>
+    <script>
+      /*
+        *** 键盘事件只能绑定给可以获取焦点的元素或者是document
+        思路：
+          1. 用键盘控制蛇的移动
+          2. 默认向右移动
+          3. 按下方向键时，蛇往该方向每次移动10px
+      */
+      /*
+        当我们按着某个按键不松开时，按键按下时间会持续触发
+          但是第一次和第二次触发的间隔会比较长
+          这样导致练习中蛇不能流畅的移动
+          贪吃蛇类的游戏，蛇是不能停的
+          */
+      const snake = document.getElementById("snake");
+      const keyArr = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
+      // 获取蛇的各个部分
+      const snakes = snake.getElementsByTagName("div");
+      // 获取蛇头
+      const snakeHead = snakes[0];
+      // 获取食物
+      const food = document.getElementById("food");
+
+      let dir;
+      let scoreNum = 0;
+      document.addEventListener("keydown", (event) => {
+        // 只有当按键为方向键时，才改变方向
+        if (keyArr.includes(event.key)) {
+          dir = event.key;
+        }
+      });
+
+      // 改变食物坐标的方法
+      function changeFoodPosition() {
+        let posX = Math.round(Math.random() * 29) * 10;
+        let posY = Math.round(Math.random() * 29) * 10;
+        food.style.left = posX + "px";
+        food.style.top = posY + "px";
+        // if (pos % 10 !== 0) {
+        //   return changeFoodPosition();
+        // } else {
+        //   return pos;
+        // }
+      }
+      changeFoodPosition();
+
+      // 蛇身位置变更的方法
+      // function snakeBodyMoving() {
+      //   if (condition) {
+      //   }
+      //   snakes[scoreNum].style.left = snakes[scoreNum - 1].style.left;
+      //   snakes[scoreNum].style.top = snakes[scoreNum - 1].style.top;
+      // }
+      const score = document.getElementById("score");
+      setInterval(function moving() {
+        switch (dir) {
+          case "ArrowLeft":
+            snakeHead.style.left = snakeHead.offsetLeft - 10 + "px";
+            break;
+          case "ArrowRight":
+            snakeHead.style.left = snakeHead.offsetLeft + 10 + "px";
+            break;
+          case "ArrowUp":
+            snakeHead.style.top = snakeHead.offsetTop - 10 + "px";
+            break;
+          case "ArrowDown":
+            snakeHead.style.top = snakeHead.offsetTop + 10 + "px";
+            break;
+        }
+        /*
+          检查蛇是否吃到食物
+          如果蛇头的坐标与食物的坐标一致，则说明吃到食物
+            1. 食物消失
+            2. 蛇身 +1
+        */
+        if (
+          snakeHead.offsetTop === food.offsetTop &&
+          snakeHead.offsetLeft === food.offsetLeft
+        ) {
+          // 食物的坐标立刻改变 改变范围为(0,290)
+          changeFoodPosition();
+          scoreNum += 1;
+          score.innerText = `${scoreNum}`;
+
+          // 蛇身 +1
+          let snakeBody = document.createElement("div");
+          snake.insertAdjacentElement("beforeend", snakeBody);
+        }
+        // snakeBodyMoving();
+      }, 100);
+    </script>
+  </body>
+</html>
