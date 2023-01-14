@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>游戏结束的条件</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #outer {
+        width: 360px;
+        height: 420px;
+        padding: 16px;
+        border: 10px solid black;
+        border-radius: 5%;
+        background-color: #b7d4a8;
+        margin: auto;
+        margin-top: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      #inside {
+        width: 304px;
+        height: 304px;
+        border: 2px solid black;
+        position: relative;
+      }
+
+      #food {
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        display: flex;
+        top: 120px;
+        left: 80px;
+        flex-flow: wrap;
+      }
+
+      #food > div {
+        width: 5px;
+        height: 5px;
+        transform: rotate(45deg);
+        background-color: #000;
+      }
+
+      #snake > div {
+        width: 10px;
+        height: 10px;
+        background-color: #000;
+        position: absolute;
+        top: 130px;
+        left: 60px;
+        border: 1px solid #b7d4a8;
+      }
+
+      #gameInfo {
+        display: flex;
+        justify-content: space-between;
+        font-family: "Courier New", Courier, monospace;
+        font-weight: bold;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 需要一个容器作为游戏的主窗口 -->
+    <div id="outer">
+      <div id="inside">
+        <div id="food">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div id="snake">
+          <div></div>
+        </div>
+      </div>
+      <div id="gameInfo">
+        <div>SCORE:<span id="score">0</span></div>
+        <div>LEVEL:<span id="level">1</span></div>
+      </div>
+    </div>
+    <script>
+      const snake = document.getElementById("snake");
+      const keyArr = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
+      const snakes = snake.getElementsByTagName("div");
+      console.log(snakes.length);
+      const food = document.getElementById("food");
+      const reObj = {
+        ArrowLeft: "ArrowRight",
+        ArrowRight: "ArrowLeft",
+        ArrowUp: "ArrowDown",
+        ArrowDown: "ArrowUp",
+      };
+
+      let dir;
+      let keyActive = true;
+      let scoreNum = 0;
+
+      /*
+        游戏要禁止掉头：
+          构成的要件：
+            1. 身体长度超过2
+            2. 不能是相反的方向
+          处理：
+            保持原来的方向不变（不修改dir的值）
+      */
+      document.addEventListener("keydown", (event) => {
+        if (keyActive && keyArr.includes(event.key)) {
+          // 判断蛇是否掉头
+          if (snakes.length < 2 || reObj[dir] !== event.key) {
+            dir = event.key;
+            keyActive = false;
+          }
+        }
+      });
+
+      function changeFoodPosition() {
+        let posX = Math.round(Math.random() * 29) * 10;
+        let posY = Math.round(Math.random() * 29) * 10;
+        food.style.left = posX + "px";
+        food.style.top = posY + "px";
+      }
+      changeFoodPosition();
+
+      /*
+        要使得身体可以和头一起移动，只需要在蛇移动时，变化蛇尾巴的位置
+      */
+      const score = document.getElementById("score");
+      setInterval(function moving() {
+        const snakeHead = snakes[0];
+        let headX = snakeHead.offsetLeft;
+        let headY = snakeHead.offsetTop;
+        switch (dir) {
+          case "ArrowLeft":
+            headX -= 10;
+            break;
+          case "ArrowRight":
+            headX += 10;
+            break;
+          case "ArrowUp":
+            headY -= 10;
+            break;
+          case "ArrowDown":
+            headY += 10;
+            break;
+        }
+        if (
+          snakeHead.offsetTop === food.offsetTop &&
+          snakeHead.offsetLeft === food.offsetLeft
+        ) {
+          changeFoodPosition();
+          scoreNum += 1;
+          score.innerText = `${scoreNum}`;
+
+          let snakeBody = document.createElement("div");
+          snake.insertAdjacentElement("beforeend", snakeBody);
+        }
+        /*
+          判断游戏是否结束
+            1. 撞墙
+            2. 撞自己
+        */
+        // 撞墙
+        if (headX < 0 || headX > 290 || headY < 0 || headY > 290) {
+          // 游戏结束
+          return;
+        }
+
+        // 判断是否撞到自己
+        for (let i = 0; i < snakes.length - 1; i++) {
+          if (snakes[i].offsetLeft === headX && snakes[i].offsetTop === headY) {
+            return;
+          }
+        }
+        const tail = snakes[snakes.length - 1];
+        tail.style.left = headX + "px";
+        tail.style.top = headY + "px";
+        snake.insertAdjacentElement("afterbegin", tail);
+        keyActive = true;
+      }, 300);
+    </script>
+  </body>
+</html>
